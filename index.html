@@ -379,9 +379,10 @@
 
     .hero-programs {
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       gap: 10px;
       margin-bottom: 30px;
+      overflow-x: auto;
     }
 
     .program-tag {
@@ -391,6 +392,8 @@
       font-size: 0.85rem;
       font-weight: 600;
       border: 2px solid;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .program-tag.infant { border-color: var(--pastel-pink); color: #E84393; }
