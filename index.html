@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Allyz World of Knowledge | Early Childhood Learning Center</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --pastel-blue: #7EC8E3;
+      --pastel-purple: #B19CD9;
+      --pastel-yellow: #FFEAA7;
+      --pastel-pink: #FFB6C1;
+      --pastel-green: #98D8AA;
+      --white: #ffffff;
+      --off-white: #FFF9F0;
+      --text-dark: #2D3436;
+      --text-gray: #636E72;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(180deg, var(--off-white) 0%, #fff 100%);
+      color: var(--text-dark);
+      line-height: 1.7;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Background Shapes Pattern */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image: 
+        radial-gradient(circle at 10% 20%, var(--pastel-pink) 0%, transparent 8%),
+        radial-gradient(circle at 90% 10%, var(--pastel-blue) 0%, transparent 10%),
+        radial-gradient(circle at 85% 60%, var(--pastel-yellow) 0%, transparent 12%),
+        radial-gradient(circle at 15% 70%, var(--pastel-purple) 0%, transparent 9%),
+        radial-gradient(circle at 50% 30%, var(--pastel-green) 0%, transparent 7%),
+        radial-gradient(circle at 30% 90%, var(--pastel-pink) 0%, transparent 10%),
+        radial-gradient(circle at 70% 85%, var(--pastel-blue) 0%, transparent 8%),
+        radial-gradient(circle at 5% 50%, var(--pastel-yellow) 0%, transparent 6%);
+    }
+
+    /* Floating shapes overlay */
+    .bg-shapes {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .bg-shape {
+      position: absolute;
+      animation: floatShape 20s ease-in-out infinite;
+    }
+
+    .bg-shape.circle {
+      border-radius: 50%;
+    }
+
+    .bg-shape.triangle {
+      width: 0;
+      height: 0;
+      background: transparent;
+    }
+
+    .bg-shape.square {
+      border-radius: 20%;
+      transform: rotate(15deg);
+    }
+
+    .bg-shape:nth-child(1) {
+      width: 300px;
+      height: 300px;
+      background: var(--pastel-pink);
+      top: 5%;
+      left: -5%;
+      animation-delay: 0s;
+    }
+
+    .bg-shape:nth-child(2) {
+      width: 200px;
+      height: 200px;
+      background: var(--pastel-blue);
+      top: 20%;
+      right: -3%;
+      animation-delay: -5s;
+    }
+
+    .bg-shape:nth-child(3) {
+      width: 150px;
+      height: 150px;
+      background: var(--pastel-yellow);
+      top: 45%;
+      left: 5%;
+      animation-delay: -10s;
+    }
+
+    .bg-shape:nth-child(4) {
+      width: 250px;
+      height: 250px;
+      background: var(--pastel-purple);
+      top: 60%;
+      right: 8%;
+      animation-delay: -3s;
+    }
+
+    .bg-shape:nth-child(5) {
+      width: 180px;
+      height: 180px;
+      background: var(--pastel-green);
+      top: 80%;
+      left: 15%;
+      animation-delay: -8s;
+    }
+
+    .bg-shape:nth-child(6) {
+      width: 120px;
+      height: 120px;
+      background: var(--pastel-pink);
+      top: 35%;
+      right: 20%;
+      animation-delay: -12s;
+    }
+
+    .bg-shape:nth-child(7) {
+      width: 220px;
+      height: 220px;
+      background: var(--pastel-blue);
+      top: 90%;
+      right: -5%;
+      animation-delay: -15s;
+    }
+
+    .bg-shape:nth-child(8) {
+      width: 100px;
+      height: 100px;
+      background: var(--pastel-yellow);
+      top: 10%;
+      left: 40%;
+      animation-delay: -7s;
+    }
+
+    @keyframes floatShape {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      25% { transform: translateY(-30px) rotate(5deg); }
+      50% { transform: translateY(-10px) rotate(-3deg); }
+      75% { transform: translateY(-25px) rotate(3deg); }
+    }
+
+    /* Ensure content is above shapes */
+    nav, section, footer {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Section decorative shapes */
+    section::before,
+    section::after {
+      content: '';
+      position: absolute;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    #programs::before {
+      width: 400px;
+      height: 400px;
+      background: var(--pastel-purple);
+      border-radius: 50%;
+      top: -100px;
+      right: -150px;
+    }
+
+    #programs::after {
+      width: 250px;
+      height: 250px;
+      background: var(--pastel-yellow);
+      border-radius: 30%;
+      bottom: 50px;
+      left: -100px;
+      transform: rotate(25deg);
+    }
+
+    #learning::before {
+      width: 300px;
+      height: 300px;
+      background: var(--pastel-blue);
+      border-radius: 50%;
+      top: 50%;
+      left: -120px;
+      transform: translateY(-50%);
+    }
+
+    #facility::before {
+      width: 350px;
+      height: 350px;
+      background: var(--pastel-green);
+      border-radius: 40%;
+      top: -80px;
+      left: 10%;
+      transform: rotate(-15deg);
+    }
+
+    #facility::after {
+      width: 280px;
+      height: 280px;
+      background: var(--pastel-pink);
+      border-radius: 50%;
+      bottom: -100px;
+      right: 5%;
+    }
+
+    #contact::before {
+      width: 320px;
+      height: 320px;
+      background: var(--pastel-purple);
+      border-radius: 45%;
+      top: 20%;
+      right: -130px;
+      transform: rotate(20deg);
+    }
+
+    /* Dots pattern overlay */
+    .dots-pattern {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      background-image: radial-gradient(circle, var(--text-dark) 1px, transparent 1px);
+      background-size: 30px 30px;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Baloo 2', cursive;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .nav-logo img {
+      height: 50px;
+    }
+
+    .nav-logo span {
+      font-family: 'Baloo 2', cursive;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--text-dark);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--pastel-purple);
+    }
+
+    .nav-cta {
+      background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-blue));
+      color: white;
+      padding: 12px 25px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(177, 156, 217, 0.4);
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 40px 80px;
+      background: linear-gradient(135deg, rgba(126, 200, 227, 0.1) 0%, rgba(177, 156, 217, 0.1) 50%, rgba(255, 182, 193, 0.1) 100%);
+    }
+
+    .hero-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-content h1 {
+      font-size: 3.5rem;
+      line-height: 1.1;
+      margin-bottom: 15px;
+      background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--pastel-yellow);
+      color: var(--text-dark);
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 25px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      color: var(--text-gray);
+      margin-bottom: 30px;
+      max-width: 500px;
+    }
+
+    .hero-programs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    .program-tag {
+      background: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: 2px solid;
+    }
+
+    .program-tag.infant { border-color: var(--pastel-pink); color: #E84393; }
+    .program-tag.toddler { border-color: var(--pastel-yellow); color: #F39C12; }
+    .program-tag.preschool { border-color: var(--pastel-green); color: #27AE60; }
+    .program-tag.school { border-color: var(--pastel-blue); color: #3498DB; }
+
+    .hero-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    .hero-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+    }
+
+    .hero-contact-item span {
+      color: var(--pastel-purple);
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-blue));
+      color: white;
+      padding: 16px 35px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(177, 156, 217, 0.4);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--text-dark);
+      padding: 16px 35px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      border: 2px solid var(--pastel-purple);
+      transition: all 0.3s;
+    }
+
+    .btn-secondary:hover {
+      background: var(--pastel-purple);
+      color: white;
+    }
+
+    .hero-image {
+      position: relative;
+    }
+
+    .hero-image img {
+      width: 100%;
+      border-radius: 30px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    }
+
+    .hero-logo-badge {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      background: white;
+      padding: 15px;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    }
+
+    .hero-logo-badge img {
+      width: 100px;
+      height: auto;
+    }
+
+    /* Section Styling */
+    section {
+      padding: 100px 40px;
+    }
+
+    .section-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-header h2 {
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+      color: var(--text-dark);
+    }
+
+    .section-header p {
+      color: var(--text-gray);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .section-accent {
+      display: inline-block;
+      width: 60px;
+      height: 4px;
+      border-radius: 2px;
+      margin-top: 15px;
+    }
+
+    /* Programs Section */
+    #programs {
+      background: linear-gradient(180deg, white 0%, rgba(126, 200, 227, 0.05) 100%);
+    }
+
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .program-card {
+      background: white;
+      border-radius: 25px;
+      padding: 40px 30px;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+      transition: all 0.3s;
+      border: 3px solid transparent;
+    }
+
+    .program-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .program-card.infant { border-top-color: var(--pastel-pink); }
+    .program-card.toddler { border-top-color: var(--pastel-yellow); }
+    .program-card.preschool { border-top-color: var(--pastel-green); }
+    .program-card.school { border-top-color: var(--pastel-blue); }
+
+    .program-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 2rem;
+    }
+
+    .program-card.infant .program-icon { background: rgba(255, 182, 193, 0.2); }
+    .program-card.toddler .program-icon { background: rgba(255, 234, 167, 0.3); }
+    .program-card.preschool .program-icon { background: rgba(152, 216, 170, 0.2); }
+    .program-card.school .program-icon { background: rgba(126, 200, 227, 0.2); }
+
+    .program-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .program-card p {
+      color: var(--text-gray);
+      font-size: 0.95rem;
+    }
+
+    .enrollment-options {
+      margin-top: 50px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .enrollment-badge {
+      background: linear-gradient(135deg, var(--pastel-green), var(--pastel-blue));
+      color: white;
+      padding: 15px 30px;
+      border-radius: 50px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .enrollment-badge span {
+      font-size: 1.3rem;
+    }
+
+    /* Learning Program Section */
+    #learning {
+      background: var(--off-white);
+    }
+
+    .learning-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+
+    .learning-item {
+      background: white;
+      padding: 25px 30px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+      transition: all 0.3s;
+    }
+
+    .learning-item:hover {
+      transform: translateX(10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .learning-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .learning-item:nth-child(1) .learning-icon { background: rgba(126, 200, 227, 0.2); }
+    .learning-item:nth-child(2) .learning-icon { background: rgba(177, 156, 217, 0.2); }
+    .learning-item:nth-child(3) .learning-icon { background: rgba(152, 216, 170, 0.2); }
+    .learning-item:nth-child(4) .learning-icon { background: rgba(255, 182, 193, 0.2); }
+    .learning-item:nth-child(5) .learning-icon { background: rgba(255, 234, 167, 0.3); }
+    .learning-item:nth-child(6) .learning-icon { background: rgba(126, 200, 227, 0.2); }
+    .learning-item:nth-child(7) .learning-icon { background: rgba(177, 156, 217, 0.2); }
+    .learning-item:nth-child(8) .learning-icon { background: rgba(152, 216, 170, 0.2); }
+
+    .learning-item h4 {
+      font-size: 1.1rem;
+      margin-bottom: 5px;
+    }
+
+    .learning-item p {
+      color: var(--text-gray);
+      font-size: 0.9rem;
+    }
+
+    /* Facility Section */
+    #facility {
+      background: linear-gradient(135deg, rgba(177, 156, 217, 0.1) 0%, rgba(126, 200, 227, 0.1) 100%);
+    }
+
+    .facility-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .facility-card {
+      background: white;
+      border-radius: 25px;
+      padding: 35px;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+    }
+
+    .facility-card .icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .facility-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+
+    .facility-card p {
+      color: var(--text-gray);
+      font-size: 0.95rem;
+    }
+
+    .facility-message {
+      text-align: center;
+      margin-top: 50px;
+      padding: 30px;
+      background: white;
+      border-radius: 20px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .facility-message p {
+      font-size: 1.1rem;
+      color: var(--text-dark);
+      font-weight: 500;
+    }
+
+    /* Language Section */
+    #language {
+      background: white;
+    }
+
+    .language-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .language-content h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .language-content p {
+      color: var(--text-gray);
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+
+    .language-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--pastel-yellow), var(--pastel-pink));
+      padding: 15px 25px;
+      border-radius: 50px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .language-features {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .language-feature {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 15px 20px;
+      background: var(--off-white);
+      border-radius: 15px;
+    }
+
+    .language-feature span {
+      font-size: 1.5rem;
+    }
+
+    .language-visual {
+      background: linear-gradient(135deg, var(--pastel-blue), var(--pastel-purple));
+      border-radius: 30px;
+      padding: 60px;
+      text-align: center;
+      color: white;
+    }
+
+    .language-visual .big-text {
+      font-family: 'Baloo 2', cursive;
+      font-size: 4rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .language-visual p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    /* Contact Section */
+    #contact {
+      background: linear-gradient(180deg, var(--off-white) 0%, white 100%);
+    }
+
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+    }
+
+    .contact-info h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+    }
+
+    .hours-box {
+      background: linear-gradient(135deg, var(--pastel-green), var(--pastel-blue));
+      color: white;
+      padding: 30px;
+      border-radius: 20px;
+      margin-bottom: 30px;
+    }
+
+    .hours-box h3 {
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+    }
+
+    .hours-box .hours {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 20px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    }
+
+    .contact-item .icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+
+    .contact-item:nth-child(1) .icon { background: rgba(255, 182, 193, 0.2); }
+    .contact-item:nth-child(2) .icon { background: rgba(126, 200, 227, 0.2); }
+    .contact-item:nth-child(3) .icon { background: rgba(177, 156, 217, 0.2); }
+
+    .contact-item h4 {
+      font-size: 0.85rem;
+      color: var(--text-gray);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+    }
+
+    .contact-item p {
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .contact-cta {
+      background: white;
+      padding: 50px;
+      border-radius: 30px;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+    }
+
+    .contact-cta img {
+      width: 150px;
+      margin-bottom: 30px;
+    }
+
+    .contact-cta h3 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    .contact-cta .limited-spots {
+      color: var(--pastel-purple);
+      font-weight: 700;
+      margin-bottom: 30px;
+    }
+
+    .contact-cta .btn-primary {
+      font-size: 1.1rem;
+      padding: 18px 40px;
+    }
+
+    .social-link {
+      margin-top: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: var(--text-dark);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .social-link:hover {
+      color: var(--pastel-purple);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--text-dark);
+      color: white;
+      padding: 40px;
+      text-align: center;
+    }
+
+    footer p {
+      opacity: 0.7;
+      font-size: 0.9rem;
+    }
+
+    /* ===== SCROLL ANIMATIONS ===== */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(60px);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .animate-on-scroll.animated {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Slide from left */
+    .slide-left {
+      opacity: 0;
+      transform: translateX(-80px);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .slide-left.animated {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Slide from right */
+    .slide-right {
+      opacity: 0;
+      transform: translateX(80px);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .slide-right.animated {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Fade in up */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .fade-up.animated {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Scale up */
+    .scale-up {
+      opacity: 0;
+      transform: scale(0.8);
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .scale-up.animated {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Staggered children delay */
+    .stagger-1 { transition-delay: 0.1s; }
+    .stagger-2 { transition-delay: 0.2s; }
+    .stagger-3 { transition-delay: 0.3s; }
+    .stagger-4 { transition-delay: 0.4s; }
+    .stagger-5 { transition-delay: 0.5s; }
+    .stagger-6 { transition-delay: 0.6s; }
+    .stagger-7 { transition-delay: 0.7s; }
+    .stagger-8 { transition-delay: 0.8s; }
+
+    /* Pop effect for cards */
+    .pop-in {
+      opacity: 0;
+      transform: scale(0.5) rotate(-5deg);
+      transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    .pop-in.animated {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+    }
+
+    /* Bounce effect */
+    .bounce-in {
+      opacity: 0;
+      transform: translateY(-40px);
+      transition: all 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    .bounce-in.animated {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Float animation for hero */
+    .float {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    /* Pulse glow for CTA */
+    .pulse-glow {
+      animation: pulseGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 10px 30px rgba(177, 156, 217, 0.3); }
+      50% { box-shadow: 0 15px 50px rgba(177, 156, 217, 0.5), 0 0 30px rgba(126, 200, 227, 0.3); }
+    }
+
+    /* Initial state for fade-up */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    .fade-up.animated {
+      opacity: 1;
+      transform: translateY(0);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Wiggle for badges */
+    .wiggle:hover {
+      animation: wiggle 0.5s ease-in-out;
+    }
+
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-5deg); }
+      75% { transform: rotate(5deg); }
+    }
+
+    /* Sparkle effect */
+    .sparkle {
+      position: relative;
+    }
+
+    .sparkle::after {
+      content: '✨';
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      animation: sparkle 2s ease-in-out infinite;
+      font-size: 1.2rem;
+    }
+
+    @keyframes sparkle {
+      0%, 100% { opacity: 0; transform: scale(0); }
+      50% { opacity: 1; transform: scale(1); }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .animate-on-scroll,
+      .slide-left,
+      .slide-right,
+      .scale-up,
+      .pop-in,
+      .bounce-in,
+      .float,
+      .pulse-glow {
+        animation: none;
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 968px) {
+      .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero-content p {
+        margin: 0 auto 30px;
+      }
+
+      .hero-contact {
+        align-items: center;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .hero-image {
+        order: -1;
+      }
+
+      .hero-logo-badge {
+        display: none;
+      }
+
+      .language-container,
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        padding: 15px 20px;
+      }
+
+      section {
+        padding: 60px 20px;
+      }
+
+      .hero {
+        padding: 100px 20px 60px;
+      }
+
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+
+      .section-header h2 {
+        font-size: 2rem;
+      }
+
+      .programs-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .enrollment-options {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .contact-cta {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Shapes -->
+  <div class="bg-shapes">
+    <div class="bg-shape circle"></div>
+    <div class="bg-shape circle"></div>
+    <div class="bg-shape circle"></div>
+    <div class="bg-shape circle"></div>
+    <div class="bg-shape circle"></div>
+    <div class="bg-shape circle"></div>
+    <div class="bg-shape circle"></div>
+    <div class="bg-shape circle"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-logo">
+      <img src="logo-transparent.png" alt="Allyz World">
+      <span>Allyz World of Knowledge</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#programs">Programs</a></li>
+      <li><a href="#learning">Learning</a></li>
+      <li><a href="#facility">Facility</a></li>
+      <li><a href="#language">Language</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Enroll Now</a>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-container">
+      <div class="hero-content">
+        <span class="hero-badge bounce-in">✨ Now Enrolling</span>
+        <h1 class="fade-up stagger-1">Allyz World of Knowledge</h1>
+        <p class="fade-up stagger-2">A safe, nurturing, and engaging learning environment where children grow academically, socially, and emotionally. Our program focuses on early childhood development through structured learning and play.</p>
+
+        <div class="hero-programs fade-up stagger-3">
+          <span class="program-tag infant wiggle">👶 Infant</span>
+          <span class="program-tag toddler wiggle">🧒 Toddler</span>
+          <span class="program-tag preschool wiggle">🎒 Preschool</span>
+          <span class="program-tag school wiggle">📚 Before & After School</span>
+        </div>
+
+        <div class="hero-contact fade-up stagger-4">
+          <div class="hero-contact-item">
+            <span>📍</span> 2058 Ridge Ave, Philadelphia
+          </div>
+          <div class="hero-contact-item">
+            <span>📞</span> 267-807-2918
+          </div>
+        </div>
+
+        <div class="hero-buttons fade-up stagger-5">
+          <a href="#contact" class="btn-primary pulse-glow">Enroll Today →</a>
+          <a href="https://instagram.com/allyzworldofknowledge_" target="_blank" class="btn-secondary">Follow Us</a>
+        </div>
+      </div>
+
+      <div class="hero-image float slide-right">
+        <img src="hero-photo.jpg" alt="Children learning and playing at Allyz World of Knowledge" style="width: 100%; border-radius: 30px; box-shadow: 0 20px 60px rgba(0,0,0,0.1);">
+        <div class="hero-logo-badge">
+          <img src="logo-transparent.png" alt="Logo">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Programs Section -->
+  <section id="programs">
+    <div class="section-container">
+      <div class="section-header animate-on-scroll">
+        <h2>Programs Available</h2>
+        <p>We provide quality childcare programs designed to support children through every early stage of development.</p>
+        <div class="section-accent" style="background: var(--pastel-purple);"></div>
+      </div>
+
+      <div class="programs-grid">
+        <div class="program-card infant pop-in stagger-1">
+          <div class="program-icon">👶</div>
+          <h3>Infant Care</h3>
+          <p>Loving, attentive care for your youngest learners in a safe and nurturing environment.</p>
+        </div>
+
+        <div class="program-card toddler pop-in stagger-2">
+          <div class="program-icon">🧒</div>
+          <h3>Toddler Care</h3>
+          <p>Exploration and discovery through guided play and early learning activities.</p>
+        </div>
+
+        <div class="program-card preschool pop-in stagger-3">
+          <div class="program-icon">🎒</div>
+          <h3>Preschool Program</h3>
+          <p>Building school readiness through structured curriculum and social development.</p>
+        </div>
+
+        <div class="program-card school pop-in stagger-4">
+          <div class="program-icon">📚</div>
+          <h3>Before & After School</h3>
+          <p>Safe, engaging care for school-age children with homework support and activities.</p>
+        </div>
+      </div>
+
+      <div class="enrollment-options animate-on-scroll">
+        <div class="enrollment-badge wiggle">
+          <span>✔</span> Full-Time Enrollment Available
+        </div>
+        <div class="enrollment-badge wiggle">
+          <span>✔</span> Part-Time Enrollment Available
+        </div>
+      </div>
+
+      <p class="animate-on-scroll" style="text-align: center; margin-top: 40px; color: var(--text-gray); font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto;">
+        Our goal is to create a positive, structured, and caring environment where every child feels supported while learning and growing.
+      </p>
+    </div>
+  </section>
+
+  <!-- Learning Program Section -->
+  <section id="learning">
+    <div class="section-container">
+      <div class="section-header animate-on-scroll">
+        <h2>Our Learning Program Includes</h2>
+        <p>Our program combines structured education and creative play to help children develop key skills.</p>
+        <div class="section-accent" style="background: var(--pastel-blue);"></div>
+      </div>
+
+      <div class="learning-grid">
+        <div class="learning-item slide-left stagger-1">
+          <div class="learning-icon">📋</div>
+          <div>
+            <h4>Structured Weekly Lesson Plans</h4>
+            <p>Organized curriculum that builds progressively</p>
+          </div>
+        </div>
+
+        <div class="learning-item slide-right stagger-2">
+          <div class="learning-icon">📖</div>
+          <div>
+            <h4>Research-Based Curriculum</h4>
+            <p>Early childhood education best practices</p>
+          </div>
+        </div>
+
+        <div class="learning-item slide-left stagger-3">
+          <div class="learning-icon">🔬</div>
+          <div>
+            <h4>STEM Learning Activities</h4>
+            <p>Science, technology, engineering & math fun</p>
+          </div>
+        </div>
+
+        <div class="learning-item slide-right stagger-4">
+          <div class="learning-icon">📚</div>
+          <div>
+            <h4>Language & Early Literacy</h4>
+            <p>Building reading and communication skills</p>
+          </div>
+        </div>
+
+        <div class="learning-item slide-left stagger-5">
+          <div class="learning-icon">🎨</div>
+          <div>
+            <h4>Creative Play & Hands-On Learning</h4>
+            <p>Learning through exploration and creativity</p>
+          </div>
+        </div>
+
+        <div class="learning-item slide-right stagger-6">
+          <div class="learning-icon">🚽</div>
+          <div>
+            <h4>Potty Training Assistance</h4>
+            <p>Supportive approach for this milestone</p>
+          </div>
+        </div>
+
+        <div class="learning-item slide-left stagger-7">
+          <div class="learning-icon">💬</div>
+          <div>
+            <h4>Daily Parent Communication</h4>
+            <p>Stay connected with updates on your child</p>
+          </div>
+        </div>
+
+        <div class="learning-item slide-right stagger-8">
+          <div class="learning-icon">🧷</div>
+          <div>
+            <h4>Free Pampers & Wipes</h4>
+            <p>One less thing for you to worry about</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Facility Section -->
+  <section id="facility">
+    <div class="section-container">
+      <div class="section-header animate-on-scroll">
+        <h2>Facility Features</h2>
+        <p>Our center is designed to provide a safe and engaging space for children to learn, explore, and stay active.</p>
+        <div class="section-accent" style="background: var(--pastel-green);"></div>
+      </div>
+
+      <div class="facility-grid">
+        <div class="facility-card scale-up stagger-1">
+          <div class="icon">🌳</div>
+          <h3>Huge Outdoor Play Area</h3>
+          <p>Spacious outdoor space for fresh air, exercise, and nature exploration.</p>
+        </div>
+
+        <div class="facility-card scale-up stagger-2">
+          <div class="icon">🏃</div>
+          <h3>Large Gross Motor Space</h3>
+          <p>Room to run, jump, climb, and develop physical skills.</p>
+        </div>
+
+        <div class="facility-card scale-up stagger-3">
+          <div class="icon">🏠</div>
+          <h3>Safe & Nurturing Classrooms</h3>
+          <p>Secure, age-appropriate learning environments.</p>
+        </div>
+
+        <div class="facility-card scale-up stagger-4">
+          <div class="icon">🧩</div>
+          <h3>Developmentally Appropriate Centers</h3>
+          <p>Learning stations designed for each developmental stage.</p>
+        </div>
+      </div>
+
+      <div class="facility-message animate-on-scroll">
+        <p>Every classroom is designed to encourage exploration, creativity, and confidence.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Language Section -->
+  <section id="language">
+    <div class="section-container">
+      <div class="language-container">
+        <div class="language-content slide-left">
+          <h2>Language Support & Communication</h2>
+
+          <div class="language-badge wiggle">
+            🗣️ Spanish Language Support Available — Hablamos Español
+          </div>
+
+          <p>We also introduce children to basic American Sign Language (ASL) to support early communication and language development.</p>
+
+          <div class="language-features">
+            <div class="language-feature">
+              <span>🤟</span>
+              <div>
+                <strong>ASL Introduction</strong>
+                <p style="color: var(--text-gray); font-size: 0.9rem;">Basic signs for everyday communication</p>
+              </div>
+            </div>
+            <div class="language-feature">
+              <span>🗣️</span>
+              <div>
+                <strong>Bilingual Support</strong>
+                <p style="color: var(--text-gray); font-size: 0.9rem;">Spanish-speaking staff available</p>
+              </div>
+            </div>
+            <div class="language-feature">
+              <span>💪</span>
+              <div>
+                <strong>Communication Confidence</strong>
+                <p style="color: var(--text-gray); font-size: 0.9rem;">Building strong skills at an early age</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="language-visual slide-right bounce-in">
+          <div class="big-text">🗣️🤟</div>
+          <p>Building Communication Skills<br>& Confidence Early</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="section-container">
+      <div class="contact-container">
+        <div class="contact-info slide-left">
+          <h2>Hours & Contact</h2>
+
+          <div class="hours-box scale-up">
+            <h3>📅 Hours of Operation</h3>
+            <div class="hours">Monday – Friday<br>6:00 AM – 6:00 PM</div>
+          </div>
+
+          <div class="contact-details">
+            <div class="contact-item pop-in stagger-1">
+              <div class="icon">📍</div>
+              <div>
+                <h4>Location</h4>
+                <p>2058 Ridge Ave, Philadelphia, PA</p>
+              </div>
+            </div>
+
+            <div class="contact-item pop-in stagger-2">
+              <div class="icon">📞</div>
+              <div>
+                <h4>Phone</h4>
+                <p>267-807-2918</p>
+              </div>
+            </div>
+
+            <div class="contact-item pop-in stagger-3">
+              <div class="icon">📧</div>
+              <div>
+                <h4>Email</h4>
+                <p>info@allyzworldofknowledge.com</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-cta slide-right scale-up">
+          <img src="logo-transparent.png" alt="Allyz World of Knowledge">
+          <h3>Ready to Enroll?</h3>
+          <p class="limited-spots sparkle">✨ Limited Spots Available</p>
+          <a href="tel:2678072918" class="btn-primary pulse-glow">📞 Call to Enroll Today</a>
+
+          <a href="https://instagram.com/allyzworldofknowledge_" target="_blank" class="social-link">
+            📸 Follow us on Instagram @allyzworldofknowledge_
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Allyz World of Knowledge. All rights reserved.</p>
+  </footer>
+
+  <!-- Scroll Animation Script -->
+  <script>
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animated');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all animated elements
+    document.addEventListener('DOMContentLoaded', () => {
+      // Animate hero elements immediately with stagger
+      const heroElements = document.querySelectorAll('.hero .fade-up, .hero .bounce-in, .hero .slide-right');
+      heroElements.forEach((el, index) => {
+        setTimeout(() => {
+          el.classList.add('animated');
+        }, index * 150);
+      });
+
+      // Observe scroll elements
+      const animatedElements = document.querySelectorAll('.animate-on-scroll, .slide-left, .slide-right, .scale-up, .pop-in, .bounce-in, .fade-up');
+      animatedElements.forEach(el => observer.observe(el));
+    });
+  </script>
+
+</body>
+</html>
