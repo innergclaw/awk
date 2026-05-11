@@ -3,1539 +3,955 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Allyz World of Knowledge | Early Childhood Learning Center</title>
+  <title>Allyz World of Knowledge | Childcare & Early Learning Center</title>
+  <meta name="description" content="Allyz World of Knowledge is a safe, nurturing childcare and early learning center in Philadelphia offering infant care, toddler care, preschool, before and after care, and 24 hour care availability.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root {
+      --sky: #8EDFE7;
+      --pink: #F7A8C5;
+      --yellow: #F6D65E;
+      --mint: #A9E2C7;
+      --cream: #F9F7F2;
+      --orange: #F4B183;
+      --beige: #D8C3A5;
+      --gray: #EAEAEA;
+      --sage: #A8C3A0;
+      --ink: #273238;
+      --muted: #667176;
+      --white: #ffffff;
+      --line: rgba(39, 50, 56, .14);
+      --shadow: 0 24px 70px rgba(39, 50, 56, .14);
+      --radius: 26px;
     }
 
-    :root {
-      --pastel-blue: #7EC8E3;
-      --pastel-purple: #B19CD9;
-      --pastel-yellow: #FFEAA7;
-      --pastel-pink: #FFB6C1;
-      --pastel-green: #98D8AA;
-      --white: #ffffff;
-      --off-white: #FFF9F0;
-      --text-dark: #2D3436;
-      --text-gray: #636E72;
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--cream);
     }
 
     body {
-      font-family: 'Nunito', sans-serif;
-      background: linear-gradient(180deg, var(--off-white) 0%, #fff 100%);
-      color: var(--text-dark);
-      line-height: 1.7;
-      position: relative;
+      margin: 0;
+      font-family: Nunito, system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 10%, rgba(247,168,197,.34), transparent 24%),
+        radial-gradient(circle at 88% 6%, rgba(142,223,231,.34), transparent 22%),
+        radial-gradient(circle at 78% 82%, rgba(169,226,199,.34), transparent 24%),
+        var(--cream);
       overflow-x: hidden;
     }
 
-    /* Background Shapes Pattern */
     body::before {
-      content: '';
+      content: "";
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      inset: 0;
+      z-index: -1;
+      opacity: .32;
       pointer-events: none;
-      z-index: -10;
-      opacity: 0.4;
-      background-image: 
-        radial-gradient(circle at 10% 20%, var(--pastel-pink) 0%, transparent 8%),
-        radial-gradient(circle at 90% 10%, var(--pastel-blue) 0%, transparent 10%),
-        radial-gradient(circle at 85% 60%, var(--pastel-yellow) 0%, transparent 12%),
-        radial-gradient(circle at 15% 70%, var(--pastel-purple) 0%, transparent 9%),
-        radial-gradient(circle at 50% 30%, var(--pastel-green) 0%, transparent 7%),
-        radial-gradient(circle at 30% 90%, var(--pastel-pink) 0%, transparent 10%),
-        radial-gradient(circle at 70% 85%, var(--pastel-blue) 0%, transparent 8%),
-        radial-gradient(circle at 5% 50%, var(--pastel-yellow) 0%, transparent 6%);
+      background-image:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 34px 34px;
     }
 
-    /* Floating shapes overlay */
-    .bg-shapes {
-      position: fixed;
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    .wrap {
+      width: min(1160px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
       top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      pointer-events: none;
-      z-index: -10;
-      opacity: 0.3;
-      overflow: hidden;
+      z-index: 50;
+      border-bottom: 1px solid var(--line);
+      background: rgba(249,247,242,.88);
+      backdrop-filter: blur(18px);
     }
 
-    .bg-shape {
-      position: absolute;
-      animation: floatShape 20s ease-in-out infinite;
-    }
-
-    .bg-shape.circle {
-      border-radius: 50%;
-    }
-
-    .bg-shape.triangle {
-      width: 0;
-      height: 0;
-      background: transparent;
-    }
-
-    .bg-shape.square {
-      border-radius: 20%;
-      transform: rotate(15deg);
-    }
-
-    .bg-shape:nth-child(1) {
-      width: 300px;
-      height: 300px;
-      background: var(--pastel-pink);
-      top: 5%;
-      left: -5%;
-      animation-delay: 0s;
-    }
-
-    .bg-shape:nth-child(2) {
-      width: 200px;
-      height: 200px;
-      background: var(--pastel-blue);
-      top: 20%;
-      right: -3%;
-      animation-delay: -5s;
-    }
-
-    .bg-shape:nth-child(3) {
-      width: 150px;
-      height: 150px;
-      background: var(--pastel-yellow);
-      top: 45%;
-      left: 5%;
-      animation-delay: -10s;
-    }
-
-    .bg-shape:nth-child(4) {
-      width: 250px;
-      height: 250px;
-      background: var(--pastel-purple);
-      top: 60%;
-      right: 8%;
-      animation-delay: -3s;
-    }
-
-    .bg-shape:nth-child(5) {
-      width: 180px;
-      height: 180px;
-      background: var(--pastel-green);
-      top: 80%;
-      left: 15%;
-      animation-delay: -8s;
-    }
-
-    .bg-shape:nth-child(6) {
-      width: 120px;
-      height: 120px;
-      background: var(--pastel-pink);
-      top: 35%;
-      right: 20%;
-      animation-delay: -12s;
-    }
-
-    .bg-shape:nth-child(7) {
-      width: 220px;
-      height: 220px;
-      background: var(--pastel-blue);
-      top: 90%;
-      right: -5%;
-      animation-delay: -15s;
-    }
-
-    .bg-shape:nth-child(8) {
-      width: 100px;
-      height: 100px;
-      background: var(--pastel-yellow);
-      top: 10%;
-      left: 40%;
-      animation-delay: -7s;
-    }
-
-    @keyframes floatShape {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      25% { transform: translateY(-30px) rotate(5deg); }
-      50% { transform: translateY(-10px) rotate(-3deg); }
-      75% { transform: translateY(-25px) rotate(3deg); }
-    }
-
-    /* Ensure content is above shapes */
-    nav, section, footer {
-      position: relative;
-      z-index: 1;
-    }
-
-    /* Section decorative shapes */
-    section::before,
-    section::after {
-      content: '';
-      position: absolute;
-      pointer-events: none;
-      z-index: -5;
-      opacity: 0.3;
-    }
-
-    #programs::before {
-      width: 400px;
-      height: 400px;
-      background: var(--pastel-purple);
-      border-radius: 50%;
-      top: -100px;
-      right: -150px;
-    }
-
-    #programs::after {
-      width: 250px;
-      height: 250px;
-      background: var(--pastel-yellow);
-      border-radius: 30%;
-      bottom: 50px;
-      left: -100px;
-      transform: rotate(25deg);
-    }
-
-    #learning::before {
-      width: 300px;
-      height: 300px;
-      background: var(--pastel-blue);
-      border-radius: 50%;
-      top: 50%;
-      left: -120px;
-      transform: translateY(-50%);
-    }
-
-    #facility::before {
-      width: 350px;
-      height: 350px;
-      background: var(--pastel-green);
-      border-radius: 40%;
-      top: -80px;
-      left: 10%;
-      transform: rotate(-15deg);
-    }
-
-    #facility::after {
-      width: 280px;
-      height: 280px;
-      background: var(--pastel-pink);
-      border-radius: 50%;
-      bottom: -100px;
-      right: 5%;
-    }
-
-    #contact::before {
-      width: 320px;
-      height: 320px;
-      background: var(--pastel-purple);
-      border-radius: 45%;
-      top: 20%;
-      right: -130px;
-      transform: rotate(20deg);
-    }
-
-    /* Dots pattern overlay */
-    .dots-pattern {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      background-image: radial-gradient(circle, var(--text-dark) 1px, transparent 1px);
-      background-size: 30px 30px;
-      top: 0;
-      left: 0;
-      z-index: 0;
-    }
-
-    h1, h2, h3, h4 {
-      font-family: 'Baloo 2', cursive;
-    }
-
-    /* Navigation */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(10px);
-      padding: 15px 40px;
+    .nav {
+      min-height: 82px;
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: center;
-      z-index: 1000;
-      box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+      gap: 18px;
     }
 
-    .nav-logo {
+    .brand {
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 12px;
+      min-width: 0;
     }
 
-    .nav-logo img {
-      height: 50px;
+    .brand img {
+      width: 58px;
+      height: 58px;
+      object-fit: contain;
+      border-radius: 18px;
+      background: var(--white);
+      box-shadow: 0 8px 20px rgba(39,50,56,.09);
     }
 
-    .nav-logo span {
-      font-family: 'Baloo 2', cursive;
-      font-weight: 700;
-      font-size: 1.2rem;
-      color: var(--text-dark);
+    .brand strong {
+      display: block;
+      font-family: "Baloo 2", cursive;
+      font-size: 1.12rem;
+      line-height: 1;
+    }
+
+    .brand span {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: .76rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .04em;
     }
 
     .nav-links {
       display: flex;
-      gap: 30px;
-      list-style: none;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
     }
 
     .nav-links a {
-      text-decoration: none;
-      color: var(--text-dark);
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: color 0.3s;
+      padding: 10px 12px;
+      border-radius: 999px;
+      color: var(--ink);
+      font-size: .86rem;
+      font-weight: 900;
     }
 
     .nav-links a:hover {
-      color: var(--pastel-purple);
+      background: var(--white);
+      box-shadow: 0 8px 18px rgba(39,50,56,.08);
     }
 
-    .nav-cta {
-      background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-blue));
-      color: white;
-      padding: 12px 25px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 700;
-      transition: transform 0.3s, box-shadow 0.3s;
+    .nav-links .cta,
+    .button.primary {
+      background: var(--yellow);
+      box-shadow: inset 0 -3px 0 rgba(39,50,56,.12), 0 12px 24px rgba(246,214,94,.3);
     }
 
-    .nav-cta:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 20px rgba(177, 156, 217, 0.4);
-    }
-
-    /* Hero Section */
     .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding: 120px 40px 80px;
-      background: linear-gradient(135deg, rgba(126, 200, 227, 0.1) 0%, rgba(177, 156, 217, 0.1) 50%, rgba(255, 182, 193, 0.1) 100%);
+      padding: 72px 0 52px;
     }
 
-    .hero-container {
-      max-width: 1200px;
-      margin: 0 auto;
+    .hero-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
+      grid-template-columns: minmax(0, .96fr) minmax(360px, .76fr);
+      gap: 34px;
       align-items: center;
     }
 
-    .hero-content h1 {
-      font-size: 3.5rem;
-      line-height: 1.1;
-      margin-bottom: 15px;
-      background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-blue));
+    .hero-grid > *,
+    .section-head > *,
+    .about-grid > *,
+    .tour-grid > * {
+      min-width: 0;
+    }
+
+    .eyebrow {
+      width: fit-content;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      border: 2px solid rgba(39,50,56,.12);
+      border-radius: 999px;
+      background: var(--white);
+      padding: 9px 14px;
+      color: var(--muted);
+      font-size: .78rem;
+      font-weight: 1000;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: var(--pink);
+      box-shadow: 18px 0 0 var(--sky), 36px 0 0 var(--yellow);
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      font-family: "Baloo 2", Nunito, system-ui, sans-serif;
+      line-height: .96;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      max-width: 760px;
+      font-size: clamp(3.6rem, 8vw, 7.4rem);
+      overflow-wrap: normal;
+    }
+
+    .soft-gradient {
+      color: transparent;
+      background: linear-gradient(90deg, #3aaec0, #c85f8d, #d6a914);
       -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
       background-clip: text;
     }
 
-    .hero-badge {
-      display: inline-block;
-      background: var(--pastel-yellow);
-      color: var(--text-dark);
-      padding: 8px 20px;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 0.9rem;
-      margin-bottom: 25px;
-      animation: pulse 2s ease-in-out infinite;
+    .mobile-break {
+      display: none;
     }
 
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
+    .lead {
+      max-width: 650px;
+      margin: 20px 0 0;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 1.8vw, 1.26rem);
+      line-height: 1.62;
+      font-weight: 800;
     }
 
-    .hero-content p {
-      font-size: 1.2rem;
-      color: var(--text-gray);
-      margin-bottom: 30px;
-      max-width: 500px;
-    }
-
-    .hero-programs {
+    .hero-actions,
+    .button-row {
       display: flex;
-      flex-wrap: nowrap;
-      gap: 10px;
-      margin-bottom: 30px;
-      overflow-x: auto;
-    }
-
-    .program-tag {
-      background: white;
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      border: 2px solid;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-
-    .program-tag.infant { border-color: var(--pastel-pink); color: #E84393; }
-    .program-tag.toddler { border-color: var(--pastel-yellow); color: #F39C12; }
-    .program-tag.preschool { border-color: var(--pastel-green); color: #27AE60; }
-    .program-tag.school { border-color: var(--pastel-blue); color: #3498DB; }
-
-    .hero-contact {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 30px;
-    }
-
-    .hero-contact-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 600;
-    }
-
-    .hero-contact-item span {
-      color: var(--pastel-purple);
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 15px;
       flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
     }
 
-    .btn-primary {
-      background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-blue));
-      color: white;
-      padding: 16px 35px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 1rem;
-      transition: all 0.3s;
+    .button {
+      min-height: 52px;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      justify-content: center;
+      border: 0;
+      border-radius: 999px;
+      padding: 0 20px;
+      font-weight: 1000;
+      text-transform: uppercase;
+      letter-spacing: .02em;
     }
 
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(177, 156, 217, 0.4);
+    .button.secondary {
+      background: var(--white);
+      box-shadow: 0 12px 28px rgba(39,50,56,.1);
     }
 
-    .btn-secondary {
-      background: white;
-      color: var(--text-dark);
-      padding: 16px 35px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 1rem;
-      border: 2px solid var(--pastel-purple);
-      transition: all 0.3s;
-    }
-
-    .btn-secondary:hover {
-      background: var(--pastel-purple);
-      color: white;
-    }
-
-    .hero-image {
-      position: relative;
-    }
-
-    .hero-image img {
-      width: 100%;
-      border-radius: 30px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-    }
-
-    .hero-logo-badge {
-      position: absolute;
-      bottom: -20px;
-      right: -20px;
-      background: white;
-      padding: 15px;
-      border-radius: 20px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-    }
-
-    .hero-logo-badge img {
-      width: 100px;
-      height: auto;
-    }
-
-    /* Section Styling */
-    section {
-      padding: 100px 40px;
-    }
-
-    .section-container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 60px;
-    }
-
-    .section-header h2 {
-      font-size: 2.8rem;
-      margin-bottom: 15px;
-      color: var(--text-dark);
-    }
-
-    .section-header p {
-      color: var(--text-gray);
-      font-size: 1.1rem;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .section-accent {
-      display: inline-block;
-      width: 60px;
-      height: 4px;
-      border-radius: 2px;
-      margin-top: 15px;
-    }
-
-    /* Programs Section */
-    #programs {
-      background: linear-gradient(180deg, white 0%, rgba(126, 200, 227, 0.05) 100%);
-    }
-
-    .programs-grid {
+    .trust-row {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      max-width: 760px;
+      margin-top: 32px;
+    }
+
+    .trust-pill {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(255,255,255,.82);
+      padding: 16px;
+    }
+
+    .trust-pill b {
+      display: block;
+      font-family: "Baloo 2", cursive;
+      font-size: 1.6rem;
+      line-height: 1;
+    }
+
+    .trust-pill span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: .78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .hero-card {
+      position: relative;
+      border-radius: 34px;
+      background: var(--white);
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-photo {
+      min-height: 430px;
+      border-radius: 24px;
+      object-fit: cover;
+      width: 100%;
+      box-shadow: inset 0 0 0 1px var(--line);
+    }
+
+    .logo-float {
+      position: absolute;
+      left: 24px;
+      bottom: 24px;
+      width: min(250px, calc(100% - 48px));
+      border-radius: 24px;
+      background: rgba(255,255,255,.94);
+      padding: 12px;
+      box-shadow: 0 18px 46px rgba(39,50,56,.18);
+    }
+
+    .availability {
+      position: absolute;
+      top: 26px;
+      right: 26px;
+      border-radius: 20px;
+      background: var(--mint);
+      padding: 12px 14px;
+      box-shadow: 0 14px 34px rgba(39,50,56,.13);
+      font-weight: 1000;
+      text-align: center;
+    }
+
+    .section {
+      padding: 76px 0;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(280px, .46fr);
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      font-size: clamp(2.7rem, 6vw, 5.2rem);
+    }
+
+    .section-head p,
+    .section-copy {
+      color: var(--muted);
+      line-height: 1.65;
+      font-weight: 800;
+    }
+
+    .program-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .program-card,
+    .feature-card,
+    .testimonial,
+    .contact-card,
+    .gallery-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.9);
+      box-shadow: 0 18px 50px rgba(39,50,56,.08);
     }
 
     .program-card {
-      background: white;
-      border-radius: 25px;
-      padding: 40px 30px;
-      text-align: center;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.05);
-      transition: all 0.3s;
-      border: 3px solid transparent;
+      min-height: 230px;
+      padding: 20px;
+      display: grid;
+      align-content: space-between;
+      gap: 18px;
     }
 
-    .program-card:hover {
-      transform: translateY(-10px);
+    .program-card:nth-child(1) { background: linear-gradient(145deg, rgba(247,168,197,.45), var(--white)); }
+    .program-card:nth-child(2) { background: linear-gradient(145deg, rgba(246,214,94,.48), var(--white)); }
+    .program-card:nth-child(3) { background: linear-gradient(145deg, rgba(169,226,199,.5), var(--white)); }
+    .program-card:nth-child(4) { background: linear-gradient(145deg, rgba(142,223,231,.46), var(--white)); }
+    .program-card:nth-child(5) { background: linear-gradient(145deg, rgba(244,177,131,.46), var(--white)); }
+
+    .program-card small {
+      color: var(--muted);
+      font-size: .72rem;
+      font-weight: 1000;
+      text-transform: uppercase;
+      letter-spacing: .05em;
     }
-
-    .program-card.infant { border-top-color: var(--pastel-pink); }
-    .program-card.toddler { border-top-color: var(--pastel-yellow); }
-    .program-card.preschool { border-top-color: var(--pastel-green); }
-    .program-card.school { border-top-color: var(--pastel-blue); }
-
-    .program-icon {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 20px;
-      font-size: 2rem;
-    }
-
-    .program-card.infant .program-icon { background: rgba(255, 182, 193, 0.2); }
-    .program-card.toddler .program-icon { background: rgba(255, 234, 167, 0.3); }
-    .program-card.preschool .program-icon { background: rgba(152, 216, 170, 0.2); }
-    .program-card.school .program-icon { background: rgba(126, 200, 227, 0.2); }
 
     .program-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 10px;
+      font-size: 2rem;
     }
 
     .program-card p {
-      color: var(--text-gray);
-      font-size: 0.95rem;
-    }
-
-    .enrollment-options {
-      margin-top: 50px;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
-    }
-
-    .enrollment-badge {
-      background: linear-gradient(135deg, var(--pastel-green), var(--pastel-blue));
-      color: white;
-      padding: 15px 30px;
-      border-radius: 50px;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .enrollment-badge span {
-      font-size: 1.3rem;
-    }
-
-    /* Learning Program Section */
-    #learning {
-      background: var(--off-white);
-    }
-
-    .learning-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;
-    }
-
-    .learning-item {
-      background: white;
-      padding: 25px 30px;
-      border-radius: 20px;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.03);
-      transition: all 0.3s;
-    }
-
-    .learning-item:hover {
-      transform: translateX(10px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    }
-
-    .learning-icon {
-      width: 50px;
-      height: 50px;
-      border-radius: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      flex-shrink: 0;
-    }
-
-    .learning-item:nth-child(1) .learning-icon { background: rgba(126, 200, 227, 0.2); }
-    .learning-item:nth-child(2) .learning-icon { background: rgba(177, 156, 217, 0.2); }
-    .learning-item:nth-child(3) .learning-icon { background: rgba(152, 216, 170, 0.2); }
-    .learning-item:nth-child(4) .learning-icon { background: rgba(255, 182, 193, 0.2); }
-    .learning-item:nth-child(5) .learning-icon { background: rgba(255, 234, 167, 0.3); }
-    .learning-item:nth-child(6) .learning-icon { background: rgba(126, 200, 227, 0.2); }
-    .learning-item:nth-child(7) .learning-icon { background: rgba(177, 156, 217, 0.2); }
-    .learning-item:nth-child(8) .learning-icon { background: rgba(152, 216, 170, 0.2); }
-
-    .learning-item h4 {
-      font-size: 1.1rem;
-      margin-bottom: 5px;
-    }
-
-    .learning-item p {
-      color: var(--text-gray);
-      font-size: 0.9rem;
-    }
-
-    /* Facility Section */
-    #facility {
-      background: linear-gradient(135deg, rgba(177, 156, 217, 0.1) 0%, rgba(126, 200, 227, 0.1) 100%);
-    }
-
-    .facility-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-    }
-
-    .facility-card {
-      background: white;
-      border-radius: 25px;
-      padding: 35px;
-      text-align: center;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.05);
-    }
-
-    .facility-card .icon {
-      font-size: 3rem;
-      margin-bottom: 20px;
-    }
-
-    .facility-card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 10px;
-    }
-
-    .facility-card p {
-      color: var(--text-gray);
-      font-size: 0.95rem;
-    }
-
-    .facility-message {
-      text-align: center;
-      margin-top: 50px;
-      padding: 30px;
-      background: white;
-      border-radius: 20px;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .facility-message p {
-      font-size: 1.1rem;
-      color: var(--text-dark);
-      font-weight: 500;
-    }
-
-    /* Language Section */
-    #language {
-      background: white;
-    }
-
-    .language-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .language-content h2 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-    }
-
-    .language-content p {
-      color: var(--text-gray);
-      font-size: 1.1rem;
-      margin-bottom: 20px;
-    }
-
-    .language-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: linear-gradient(135deg, var(--pastel-yellow), var(--pastel-pink));
-      padding: 15px 25px;
-      border-radius: 50px;
-      font-weight: 700;
-      margin-bottom: 20px;
-    }
-
-    .language-features {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    .language-feature {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      padding: 15px 20px;
-      background: var(--off-white);
-      border-radius: 15px;
-    }
-
-    .language-feature span {
-      font-size: 1.5rem;
-    }
-
-    .language-visual {
-      background: linear-gradient(135deg, var(--pastel-blue), var(--pastel-purple));
-      border-radius: 30px;
-      padding: 60px;
-      text-align: center;
-      color: white;
-    }
-
-    .language-visual .big-text {
-      font-family: 'Baloo 2', cursive;
-      font-size: 4rem;
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.48;
       font-weight: 800;
+    }
+
+    .about-band {
+      background: linear-gradient(135deg, rgba(142,223,231,.3), rgba(247,168,197,.24)), var(--white);
+      border-block: 1px solid var(--line);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, .66fr) minmax(320px, .5fr);
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .about-panel {
+      border-radius: 34px;
+      background: var(--white);
+      padding: clamp(24px, 4vw, 42px);
+      box-shadow: var(--shadow);
+    }
+
+    .about-panel p {
+      color: var(--muted);
+      font-size: 1.04rem;
+      line-height: 1.7;
+      font-weight: 800;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .feature-line {
+      display: flex;
+      gap: 12px;
+      align-items: start;
+      border-radius: 20px;
+      background: var(--cream);
+      padding: 13px;
+      color: var(--ink);
+      font-weight: 900;
+    }
+
+    .dot {
+      width: 14px;
+      height: 14px;
+      flex: 0 0 auto;
+      margin-top: 5px;
+      border-radius: 999px;
+      background: var(--sky);
+      box-shadow: 18px 0 0 var(--pink), 36px 0 0 var(--yellow);
+    }
+
+    .environment-card {
+      border-radius: 34px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,.86)),
+        url("hero-photo.jpg") center/cover;
+      min-height: 520px;
+      padding: 22px;
+      display: grid;
+      align-content: end;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .environment-caption {
+      border-radius: 24px;
+      background: rgba(249,247,242,.93);
+      padding: 18px;
+      box-shadow: 0 15px 35px rgba(39,50,56,.12);
+    }
+
+    .environment-caption b {
+      display: block;
+      font-family: "Baloo 2", cursive;
+      font-size: 1.7rem;
+    }
+
+    .feature-grid,
+    .activity-grid,
+    .gallery-grid,
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .feature-card {
+      padding: 22px;
+      min-height: 210px;
+    }
+
+    .feature-card h3 {
+      font-size: 2rem;
       margin-bottom: 10px;
     }
 
-    .language-visual p {
-      font-size: 1.2rem;
-      opacity: 0.9;
+    .feature-card p,
+    .testimonial p {
+      color: var(--muted);
+      line-height: 1.6;
+      font-weight: 800;
     }
 
-    /* Contact Section */
-    #contact {
-      background: linear-gradient(180deg, var(--off-white) 0%, white 100%);
+    .activity-card {
+      border-radius: 26px;
+      padding: 22px;
+      background: var(--white);
+      box-shadow: 0 14px 40px rgba(39,50,56,.08);
     }
 
-    .contact-container {
+    .activity-card:nth-child(1) { border-top: 8px solid var(--sky); }
+    .activity-card:nth-child(2) { border-top: 8px solid var(--pink); }
+    .activity-card:nth-child(3) { border-top: 8px solid var(--yellow); }
+    .activity-card:nth-child(4) { border-top: 8px solid var(--mint); }
+    .activity-card:nth-child(5) { border-top: 8px solid var(--orange); }
+    .activity-card:nth-child(6) { border-top: 8px solid var(--sage); }
+
+    .activity-card h3 {
+      font-size: 1.65rem;
+      margin-bottom: 8px;
+    }
+
+    .activity-card p {
+      margin: 0;
+      color: var(--muted);
+      font-weight: 800;
+      line-height: 1.55;
+    }
+
+    .gallery-card {
+      overflow: hidden;
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+    }
+
+    .gallery-card div {
+      padding: 18px;
+    }
+
+    .gallery-card h3 {
+      font-size: 1.75rem;
+    }
+
+    .testimonial {
+      padding: 24px;
+    }
+
+    .testimonial b {
+      display: block;
+      margin-top: 18px;
+      color: var(--ink);
+    }
+
+    .tour {
+      border-radius: 40px;
+      background:
+        radial-gradient(circle at 88% 12%, rgba(246,214,94,.65), transparent 25%),
+        linear-gradient(135deg, var(--sky), var(--mint));
+      padding: clamp(28px, 5vw, 54px);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .tour-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-    }
-
-    .contact-info h2 {
-      font-size: 2.5rem;
-      margin-bottom: 30px;
-    }
-
-    .hours-box {
-      background: linear-gradient(135deg, var(--pastel-green), var(--pastel-blue));
-      color: white;
-      padding: 30px;
-      border-radius: 20px;
-      margin-bottom: 30px;
-    }
-
-    .hours-box h3 {
-      font-size: 1.3rem;
-      margin-bottom: 15px;
-    }
-
-    .hours-box .hours {
-      font-size: 1.5rem;
-      font-weight: 700;
-    }
-
-    .contact-details {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .contact-item {
-      display: flex;
+      grid-template-columns: minmax(0, .85fr) minmax(260px, .38fr);
+      gap: 22px;
       align-items: center;
-      gap: 15px;
-      padding: 20px;
-      background: white;
-      border-radius: 15px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
     }
 
-    .contact-item .icon {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.3rem;
+    .tour h2 {
+      max-width: 780px;
     }
 
-    .contact-item:nth-child(1) .icon { background: rgba(255, 182, 193, 0.2); }
-    .contact-item:nth-child(2) .icon { background: rgba(126, 200, 227, 0.2); }
-    .contact-item:nth-child(3) .icon { background: rgba(177, 156, 217, 0.2); }
-
-    .contact-item h4 {
-      font-size: 0.85rem;
-      color: var(--text-gray);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 5px;
+    .tour p {
+      max-width: 650px;
+      color: rgba(39,50,56,.78);
+      font-weight: 900;
+      line-height: 1.6;
     }
 
-    .contact-item p {
-      font-weight: 600;
-      font-size: 1.1rem;
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
     }
 
-    .contact-cta {
-      background: white;
-      padding: 50px;
-      border-radius: 30px;
-      text-align: center;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+    .contact-card {
+      padding: 24px;
     }
 
-    .contact-cta img {
-      width: 150px;
-      margin-bottom: 30px;
-    }
-
-    .contact-cta h3 {
+    .contact-card h3 {
       font-size: 2rem;
-      margin-bottom: 15px;
+      margin-bottom: 8px;
     }
 
-    .contact-cta .limited-spots {
-      color: var(--pastel-purple);
-      font-weight: 700;
-      margin-bottom: 30px;
+    .contact-card p {
+      margin: 0;
+      color: var(--muted);
+      font-weight: 900;
+      line-height: 1.55;
     }
 
-    .contact-cta .btn-primary {
-      font-size: 1.1rem;
-      padding: 18px 40px;
-    }
-
-    .social-link {
-      margin-top: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      color: var(--text-dark);
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s;
-    }
-
-    .social-link:hover {
-      color: var(--pastel-purple);
-    }
-
-    /* Footer */
     footer {
-      background: var(--text-dark);
-      color: white;
-      padding: 40px;
+      padding: 30px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .86rem;
+      font-weight: 900;
       text-align: center;
     }
 
-    footer p {
-      opacity: 0.7;
-      font-size: 0.9rem;
-    }
-
-    /* ===== SCROLL ANIMATIONS ===== */
-    .animate-on-scroll {
-      opacity: 0;
-      transform: translateY(60px);
-      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .animate-on-scroll.animated {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Slide from left */
-    .slide-left {
-      opacity: 0;
-      transform: translateX(-80px);
-      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .slide-left.animated {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    /* Slide from right */
-    .slide-right {
-      opacity: 0;
-      transform: translateX(80px);
-      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .slide-right.animated {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    /* Fade in up */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .fade-up.animated {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Scale up */
-    .scale-up {
-      opacity: 0;
-      transform: scale(0.8);
-      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .scale-up.animated {
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    /* Staggered children delay */
-    .stagger-1 { transition-delay: 0.1s; }
-    .stagger-2 { transition-delay: 0.2s; }
-    .stagger-3 { transition-delay: 0.3s; }
-    .stagger-4 { transition-delay: 0.4s; }
-    .stagger-5 { transition-delay: 0.5s; }
-    .stagger-6 { transition-delay: 0.6s; }
-    .stagger-7 { transition-delay: 0.7s; }
-    .stagger-8 { transition-delay: 0.8s; }
-
-    /* Pop effect for cards */
-    .pop-in {
-      opacity: 0;
-      transform: scale(0.5) rotate(-5deg);
-      transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    }
-
-    .pop-in.animated {
-      opacity: 1;
-      transform: scale(1) rotate(0deg);
-    }
-
-    /* Bounce effect */
-    .bounce-in {
-      opacity: 0;
-      transform: translateY(-40px);
-      transition: all 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    }
-
-    .bounce-in.animated {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Float animation for hero */
-    .float {
-      animation: float 6s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
-    }
-
-    /* Pulse glow for CTA */
-    .pulse-glow {
-      animation: pulseGlow 3s ease-in-out infinite;
-    }
-
-    @keyframes pulseGlow {
-      0%, 100% { box-shadow: 0 10px 30px rgba(177, 156, 217, 0.3); }
-      50% { box-shadow: 0 15px 50px rgba(177, 156, 217, 0.5), 0 0 30px rgba(126, 200, 227, 0.3); }
-    }
-
-    /* Initial state for fade-up */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(40px);
-    }
-
-    .fade-up.animated {
-      opacity: 1;
-      transform: translateY(0);
-      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    /* Wiggle for badges */
-    .wiggle:hover {
-      animation: wiggle 0.5s ease-in-out;
-    }
-
-    @keyframes wiggle {
-      0%, 100% { transform: rotate(0deg); }
-      25% { transform: rotate(-5deg); }
-      75% { transform: rotate(5deg); }
-    }
-
-    /* Sparkle effect */
-    .sparkle {
-      position: relative;
-    }
-
-    .sparkle::after {
-      content: '✨';
-      position: absolute;
-      top: -10px;
-      right: -10px;
-      animation: sparkle 2s ease-in-out infinite;
-      font-size: 1.2rem;
-    }
-
-    @keyframes sparkle {
-      0%, 100% { opacity: 0; transform: scale(0); }
-      50% { opacity: 1; transform: scale(1); }
-    }
-
-    /* Reduced motion */
-    @media (prefers-reduced-motion: reduce) {
-      .animate-on-scroll,
-      .slide-left,
-      .slide-right,
-      .scale-up,
-      .pop-in,
-      .bounce-in,
-      .float,
-      .pulse-glow {
-        animation: none;
-        opacity: 1;
-        transform: none;
-        transition: none;
-      }
-    }
-
-    /* Mobile Responsive */
-    @media (max-width: 968px) {
-      .hero-container {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-
-      .hero-content p {
-        margin: 0 auto 30px;
-      }
-
-      .hero-contact {
-        align-items: center;
-      }
-
-      .hero-buttons {
-        justify-content: center;
-      }
-
-      .hero-image {
-        order: -1;
-      }
-
-      .hero-logo-badge {
-        display: none;
-      }
-
-      .language-container,
-      .contact-container {
-        grid-template-columns: 1fr;
+    @media (max-width: 980px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 12px 0;
       }
 
       .nav-links {
-        display: none;
-      }
-    }
-
-    @media (max-width: 600px) {
-      nav {
-        padding: 15px 20px;
+        justify-content: flex-start;
       }
 
-      section {
-        padding: 60px 20px;
-      }
-
-      .hero {
-        padding: 100px 20px 60px;
-      }
-
-      .hero-content h1 {
-        font-size: 2.5rem;
-      }
-
-      .section-header h2 {
-        font-size: 2rem;
-      }
-
-      .programs-grid {
+      .hero-grid,
+      .section-head,
+      .about-grid,
+      .tour-grid {
         grid-template-columns: 1fr;
       }
 
-      .enrollment-options {
-        flex-direction: column;
-        align-items: center;
+      .program-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .contact-cta {
-        padding: 30px 20px;
+      .feature-grid,
+      .activity-grid,
+      .gallery-grid,
+      .testimonial-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .trust-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      html,
+      body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+
+      .wrap {
+        width: min(100% - 22px, 1160px);
+      }
+
+      .nav {
+        gap: 10px;
+      }
+
+      .brand {
+        align-items: flex-start;
+      }
+
+      .brand strong {
+        font-size: .95rem;
+      }
+
+      .brand span span {
+        font-size: .66rem;
+      }
+
+      .brand img {
+        width: 48px;
+        height: 48px;
+      }
+
+      .nav-links {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .nav-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 10px;
+        font-size: .78rem;
+        background: rgba(255,255,255,.72);
+      }
+
+      .hero {
+        padding-top: 34px;
+      }
+
+      .hero-copy {
+        width: min(100%, calc(100vw - 44px));
+        max-width: 346px;
+      }
+
+      h1 {
+        max-width: 100%;
+        font-size: clamp(2.28rem, 10.8vw, 3rem);
+        line-height: .98;
+        word-break: normal;
+        overflow-wrap: normal;
+      }
+
+      .soft-gradient {
+        display: block;
+      }
+
+      .mobile-break {
+        display: block;
+      }
+
+      .lead {
+        font-size: 1rem;
+        max-width: 346px;
+        overflow-wrap: normal;
+      }
+
+      .program-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-photo,
+      .environment-card {
+        min-height: 360px;
+      }
+
+      .availability {
+        top: 18px;
+        right: 12px;
+        max-width: 108px;
+        padding: 10px 12px;
+        font-size: .78rem;
+      }
+
+      .logo-float {
+        width: min(210px, calc(100% - 36px));
+        left: 18px;
+        bottom: 18px;
+      }
+
+      .hero-actions .button,
+      .button-row .button {
+        width: 100%;
       }
     }
   </style>
 </head>
 <body>
-
-  <!-- Background Shapes -->
-  <div class="bg-shapes">
-    <div class="bg-shape circle"></div>
-    <div class="bg-shape circle"></div>
-    <div class="bg-shape circle"></div>
-    <div class="bg-shape circle"></div>
-    <div class="bg-shape circle"></div>
-    <div class="bg-shape circle"></div>
-    <div class="bg-shape circle"></div>
-    <div class="bg-shape circle"></div>
-  </div>
-
-  <!-- Navigation -->
-  <nav>
-    <div class="nav-logo">
-      <img src="logo-transparent.png" alt="Allyz World">
-      <span>Allyz World of Knowledge</span>
+  <header class="topbar">
+    <div class="wrap nav">
+      <a class="brand" href="#top" aria-label="Allyz World of Knowledge home">
+        <img src="logo-transparent.png" alt="Allyz World of Knowledge logo">
+        <span>
+          <strong>Allyz World of Knowledge</strong>
+          <span>Childcare & Early Learning Center</span>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#programs">Programs</a>
+        <a href="#environment">Environment</a>
+        <a href="#activities">Activities</a>
+        <a href="#tour">Tour</a>
+        <a class="cta" href="tel:2678072918">Call Now</a>
+      </nav>
     </div>
-    <ul class="nav-links">
-      <li><a href="#programs">Programs</a></li>
-      <li><a href="#learning">Learning</a></li>
-      <li><a href="#facility">Facility</a></li>
-      <li><a href="#language">Language</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <a href="#contact" class="nav-cta">Enroll Now</a>
-  </nav>
+  </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-container">
-      <div class="hero-content">
-        <span class="hero-badge bounce-in">✨ Now Enrolling</span>
-        <h1 class="fade-up stagger-1">Allyz World of Knowledge</h1>
-        <p class="fade-up stagger-2">A safe, nurturing, and engaging learning environment where children grow academically, socially, and emotionally. Our program focuses on early childhood development through structured learning and play.</p>
-
-        <div class="hero-programs fade-up stagger-3">
-          <span class="program-tag infant wiggle">👶 Infant</span>
-          <span class="program-tag toddler wiggle">🧒 Toddler</span>
-          <span class="program-tag preschool wiggle">🎒 Preschool</span>
-          <span class="program-tag school wiggle">📚 Before & After School</span>
-        </div>
-
-        <div class="hero-contact fade-up stagger-4">
-          <div class="hero-contact-item">
-            <span>📍</span> 2058 Ridge Ave, Philadelphia
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">2058 Ridge Ave, Philadelphia, PA</div>
+          <h1>A safe place to <span class="soft-gradient">learn, grow,<br class="mobile-break"> and thrive.</span></h1>
+          <p class="lead">Allyz World of Knowledge gives children a nurturing early learning environment where care, creativity, structure, and family support work together every day.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="tel:2678072918">Schedule A Tour</a>
+            <a class="button secondary" href="#programs">View Programs</a>
           </div>
-          <div class="hero-contact-item">
-            <span>📞</span> 267-807-2918
+          <div class="trust-row" aria-label="Center highlights">
+            <div class="trust-pill"><b>Safe</b><span>organized care</span></div>
+            <div class="trust-pill"><b>Warm</b><span>family focused</span></div>
+            <div class="trust-pill"><b>24 hr</b><span>care available</span></div>
           </div>
         </div>
-
-        <div class="hero-buttons fade-up stagger-5">
-          <a href="#contact" class="btn-primary pulse-glow">Enroll Today →</a>
-          <a href="https://instagram.com/allyzworldofknowledge_" target="_blank" class="btn-secondary">Follow Us</a>
-        </div>
+        <aside class="hero-card" aria-label="Children at Allyz World of Knowledge">
+          <img class="hero-photo" src="hero-photo.jpg" alt="Smiling children learning together">
+          <div class="availability">Enrollment<br>Open</div>
+          <div class="logo-float">
+            <img src="logo-transparent.png" alt="Allyz World of Knowledge logo">
+          </div>
+        </aside>
       </div>
+    </section>
 
-      <div class="hero-image float slide-right">
-        <img src="hero-photo.jpg" alt="Children learning and playing at Allyz World of Knowledge" style="width: 100%; border-radius: 30px; box-shadow: 0 20px 60px rgba(0,0,0,0.1);">
-        <div class="hero-logo-badge">
-          <img src="logo-transparent.png" alt="Logo">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Programs Section -->
-  <section id="programs">
-    <div class="section-container">
-      <div class="section-header animate-on-scroll">
-        <h2>Programs Available</h2>
-        <p>We provide quality childcare programs designed to support children through every early stage of development.</p>
-        <div class="section-accent" style="background: var(--pastel-purple);"></div>
-      </div>
-
-      <div class="programs-grid">
-        <div class="program-card infant pop-in stagger-1">
-          <div class="program-icon">👶</div>
-          <h3>Infant Care</h3>
-          <p>Loving, attentive care for your youngest learners in a safe and nurturing environment.</p>
-        </div>
-
-        <div class="program-card toddler pop-in stagger-2">
-          <div class="program-icon">🧒</div>
-          <h3>Toddler Care</h3>
-          <p>Exploration and discovery through guided play and early learning activities.</p>
-        </div>
-
-        <div class="program-card preschool pop-in stagger-3">
-          <div class="program-icon">🎒</div>
-          <h3>Preschool Program</h3>
-          <p>Building school readiness through structured curriculum and social development.</p>
-        </div>
-
-        <div class="program-card school pop-in stagger-4">
-          <div class="program-icon">📚</div>
-          <h3>Before & After School</h3>
-          <p>Safe, engaging care for school-age children with homework support and activities.</p>
-        </div>
-      </div>
-
-      <div class="enrollment-options animate-on-scroll">
-        <div class="enrollment-badge wiggle">
-          <span>✔</span> Full-Time Enrollment Available
-        </div>
-        <div class="enrollment-badge wiggle">
-          <span>✔</span> Part-Time Enrollment Available
-        </div>
-      </div>
-
-      <p class="animate-on-scroll" style="text-align: center; margin-top: 40px; color: var(--text-gray); font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto;">
-        Our goal is to create a positive, structured, and caring environment where every child feels supported while learning and growing.
-      </p>
-    </div>
-  </section>
-
-  <!-- Learning Program Section -->
-  <section id="learning">
-    <div class="section-container">
-      <div class="section-header animate-on-scroll">
-        <h2>Our Learning Program Includes</h2>
-        <p>Our program combines structured education and creative play to help children develop key skills.</p>
-        <div class="section-accent" style="background: var(--pastel-blue);"></div>
-      </div>
-
-      <div class="learning-grid">
-        <div class="learning-item slide-left stagger-1">
-          <div class="learning-icon">📋</div>
+    <section class="section" id="programs">
+      <div class="wrap">
+        <div class="section-head">
           <div>
-            <h4>Structured Weekly Lesson Plans</h4>
-            <p>Organized curriculum that builds progressively</p>
+            <div class="eyebrow">Our Programs</div>
+            <h2>Care for each stage of early growth.</h2>
           </div>
+          <p>From infants to school-age support, every program is designed to help children feel safe, confident, curious, and ready for the next step.</p>
         </div>
+        <div class="program-grid">
+          <article class="program-card"><small>Gentle beginnings</small><h3>Infant Care</h3><p>Comforting care, responsive attention, and a peaceful routine for the youngest learners.</p></article>
+          <article class="program-card"><small>Early discovery</small><h3>Toddler Care</h3><p>Language, movement, creative play, and social development in a warm daily rhythm.</p></article>
+          <article class="program-card"><small>Ready to learn</small><h3>Pre-School</h3><p>Foundational learning, classroom habits, hands-on activities, and confident school readiness.</p></article>
+          <article class="program-card"><small>Family support</small><h3>Before & After Care</h3><p>Reliable care around the school day with safe transitions and engaging activities.</p></article>
+          <article class="program-card"><small>Flexible families</small><h3>24 Hour Care Available</h3><p>Support for working families who need trusted care beyond traditional hours.</p></article>
+        </div>
+      </div>
+    </section>
 
-        <div class="learning-item slide-right stagger-2">
-          <div class="learning-icon">📖</div>
-          <div>
-            <h4>Research-Based Curriculum</h4>
-            <p>Early childhood education best practices</p>
+    <section class="section about-band" id="environment">
+      <div class="wrap about-grid">
+        <article class="about-panel">
+          <div class="eyebrow">About The Center</div>
+          <h2>Modern care with a gentle classroom feel.</h2>
+          <p>Our approach is parent-focused and child-centered. Children are welcomed into an organized, creative space where they can explore safely, build social skills, practice early learning, and feel supported by caring adults.</p>
+          <div class="feature-list">
+            <div class="feature-line"><span class="dot"></span><span>Clean, organized rooms with calming learning areas.</span></div>
+            <div class="feature-line"><span class="dot"></span><span>Play-based lessons that support real child development.</span></div>
+            <div class="feature-line"><span class="dot"></span><span>A community-focused environment where families feel known.</span></div>
+            <div class="feature-line"><span class="dot"></span><span>Warm routines that help children feel secure and confident.</span></div>
           </div>
-        </div>
-
-        <div class="learning-item slide-left stagger-3">
-          <div class="learning-icon">🔬</div>
-          <div>
-            <h4>STEM Learning Activities</h4>
-            <p>Science, technology, engineering & math fun</p>
+        </article>
+        <aside class="environment-card">
+          <div class="environment-caption">
+            <b>A place that feels safe from the first visit.</b>
+            <p class="section-copy">Bright learning moments, gentle structure, and a welcoming atmosphere for Philadelphia families.</p>
           </div>
-        </div>
+        </aside>
+      </div>
+    </section>
 
-        <div class="learning-item slide-right stagger-4">
-          <div class="learning-icon">📚</div>
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
           <div>
-            <h4>Language & Early Literacy</h4>
-            <p>Building reading and communication skills</p>
+            <div class="eyebrow">Why Families Choose Us</div>
+            <h2>Care you can feel. Learning you can see.</h2>
           </div>
+          <p>Parents need more than a place to drop off their child. They need trust, communication, consistency, and an environment that supports the whole child.</p>
         </div>
+        <div class="feature-grid">
+          <article class="feature-card"><h3>Safe Environment</h3><p>Thoughtful routines, clean spaces, and attentive supervision help children feel secure throughout the day.</p></article>
+          <article class="feature-card"><h3>Creative Play</h3><p>Hands-on activities encourage imagination, problem solving, communication, and confidence.</p></article>
+          <article class="feature-card"><h3>Family Support</h3><p>We care about the daily reality of working families and provide flexible options when possible.</p></article>
+        </div>
+      </div>
+    </section>
 
-        <div class="learning-item slide-left stagger-5">
-          <div class="learning-icon">🎨</div>
+    <section class="section" id="activities">
+      <div class="wrap">
+        <div class="section-head">
           <div>
-            <h4>Creative Play & Hands-On Learning</h4>
-            <p>Learning through exploration and creativity</p>
+            <div class="eyebrow">Daily Activities</div>
+            <h2>A day full of learning moments.</h2>
           </div>
+          <p>Children learn best when the day feels balanced: structured enough to feel safe, playful enough to stay curious, and gentle enough to build confidence.</p>
         </div>
+        <div class="activity-grid">
+          <article class="activity-card"><h3>Circle Time</h3><p>Language, music, classroom connection, and a calm start to the day.</p></article>
+          <article class="activity-card"><h3>Creative Arts</h3><p>Color, texture, crafts, imagination, and hands-on expression.</p></article>
+          <article class="activity-card"><h3>Early Literacy</h3><p>Stories, sounds, vocabulary, and reading readiness.</p></article>
+          <article class="activity-card"><h3>STEM Play</h3><p>Simple building, sorting, patterns, counting, and discovery.</p></article>
+          <article class="activity-card"><h3>Movement</h3><p>Gross motor play, coordination, dancing, and active fun.</p></article>
+          <article class="activity-card"><h3>Quiet Corners</h3><p>Reading, reflection, cozy moments, and emotional regulation.</p></article>
+        </div>
+      </div>
+    </section>
 
-        <div class="learning-item slide-right stagger-6">
-          <div class="learning-icon">🚽</div>
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
           <div>
-            <h4>Potty Training Assistance</h4>
-            <p>Supportive approach for this milestone</p>
+            <div class="eyebrow">Gallery</div>
+            <h2>Bright, warm, and child-safe.</h2>
           </div>
+          <p>Our visual promise is simple: clean spaces, soft colors, happy learning, and a place where parents can picture their child thriving.</p>
         </div>
+        <div class="gallery-grid">
+          <article class="gallery-card"><img src="hero-photo.jpg" alt="Children smiling together in a classroom"><div><h3>Classroom Joy</h3><p class="section-copy">Learning feels better when children feel welcomed.</p></div></article>
+          <article class="gallery-card"><img src="logo.png" alt="Allyz World of Knowledge logo"><div><h3>World Of Learning</h3><p class="section-copy">A playful brand built around growth and curiosity.</p></div></article>
+          <article class="gallery-card"><img src="hero-photo.jpg" alt="Children learning and playing together"><div><h3>Community Care</h3><p class="section-copy">Support for children, parents, and working families.</p></div></article>
+        </div>
+      </div>
+    </section>
 
-        <div class="learning-item slide-left stagger-7">
-          <div class="learning-icon">💬</div>
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
           <div>
-            <h4>Daily Parent Communication</h4>
-            <p>Stay connected with updates on your child</p>
+            <div class="eyebrow">Parent Confidence</div>
+            <h2>Built for trust from the first call.</h2>
           </div>
+          <p>Families deserve clear communication, a warm welcome, and a center that takes early development seriously.</p>
         </div>
+        <div class="testimonial-grid">
+          <article class="testimonial"><p>"A warm environment where children can feel safe, seen, and excited to learn."</p><b>Parent-Focused Care</b></article>
+          <article class="testimonial"><p>"A reliable option for families who need structure, flexibility, and support."</p><b>Family Support</b></article>
+          <article class="testimonial"><p>"A playful space with a real focus on development, creativity, and growth."</p><b>Early Learning</b></article>
+        </div>
+      </div>
+    </section>
 
-        <div class="learning-item slide-right stagger-8">
-          <div class="learning-icon">🧷</div>
+    <section class="section" id="tour">
+      <div class="wrap tour">
+        <div class="tour-grid">
           <div>
-            <h4>Free Pampers & Wipes</h4>
-            <p>One less thing for you to worry about</p>
+            <div class="eyebrow">Schedule A Tour</div>
+            <h2>Ready to find the right care for your child?</h2>
+            <p>Call today to ask about enrollment, availability, program options, and 24 hour care. We are here to help Philadelphia families feel confident about the next step.</p>
+          </div>
+          <div class="button-row">
+            <a class="button primary" href="tel:2678072918">Call To Enroll</a>
+            <a class="button secondary" href="#contact">Contact Info</a>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Facility Section -->
-  <section id="facility">
-    <div class="section-container">
-      <div class="section-header animate-on-scroll">
-        <h2>Facility Features</h2>
-        <p>Our center is designed to provide a safe and engaging space for children to learn, explore, and stay active.</p>
-        <div class="section-accent" style="background: var(--pastel-green);"></div>
-      </div>
-
-      <div class="facility-grid">
-        <div class="facility-card scale-up stagger-1">
-          <div class="icon">🌳</div>
-          <h3>Huge Outdoor Play Area</h3>
-          <p>Spacious outdoor space for fresh air, exercise, and nature exploration.</p>
-        </div>
-
-        <div class="facility-card scale-up stagger-2">
-          <div class="icon">🏃</div>
-          <h3>Large Gross Motor Space</h3>
-          <p>Room to run, jump, climb, and develop physical skills.</p>
-        </div>
-
-        <div class="facility-card scale-up stagger-3">
-          <div class="icon">🏠</div>
-          <h3>Safe & Nurturing Classrooms</h3>
-          <p>Secure, age-appropriate learning environments.</p>
-        </div>
-
-        <div class="facility-card scale-up stagger-4">
-          <div class="icon">🧩</div>
-          <h3>Developmentally Appropriate Centers</h3>
-          <p>Learning stations designed for each developmental stage.</p>
-        </div>
-      </div>
-
-      <div class="facility-message animate-on-scroll">
-        <p>Every classroom is designed to encourage exploration, creativity, and confidence.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Language Section -->
-  <section id="language">
-    <div class="section-container">
-      <div class="language-container">
-        <div class="language-content slide-left">
-          <h2>Language Support & Communication</h2>
-
-          <div class="language-badge wiggle">
-            🗣️ Spanish Language Support Available — Hablamos Español
+    <section class="section" id="contact">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Contact</div>
+            <h2>Visit Allyz World of Knowledge.</h2>
           </div>
-
-          <p>We also introduce children to basic American Sign Language (ASL) to support early communication and language development.</p>
-
-          <div class="language-features">
-            <div class="language-feature">
-              <span>🤟</span>
-              <div>
-                <strong>ASL Introduction</strong>
-                <p style="color: var(--text-gray); font-size: 0.9rem;">Basic signs for everyday communication</p>
-              </div>
-            </div>
-            <div class="language-feature">
-              <span>🗣️</span>
-              <div>
-                <strong>Bilingual Support</strong>
-                <p style="color: var(--text-gray); font-size: 0.9rem;">Spanish-speaking staff available</p>
-              </div>
-            </div>
-            <div class="language-feature">
-              <span>💪</span>
-              <div>
-                <strong>Communication Confidence</strong>
-                <p style="color: var(--text-gray); font-size: 0.9rem;">Building strong skills at an early age</p>
-              </div>
-            </div>
-          </div>
+          <p>Serving families in Philadelphia with safe childcare, early education, and a nurturing environment for young children.</p>
         </div>
-
-        <div class="language-visual slide-right bounce-in">
-          <div class="big-text">🗣️🤟</div>
-          <p>Building Communication Skills<br>& Confidence Early</p>
+        <div class="contact-grid">
+          <article class="contact-card"><h3>Location</h3><p>2058 Ridge Ave<br>Philadelphia, PA</p></article>
+          <article class="contact-card"><h3>Phone</h3><p><a href="tel:2678072918">(267) 807-2918</a><br>Call for enrollment and tours.</p></article>
+          <article class="contact-card"><h3>Online</h3><p><a href="mailto:info@allyzworldofknowledge.com">info@allyzworldofknowledge.com</a><br>@allyzworldofknowledge_</p></article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- Contact Section -->
-  <section id="contact">
-    <div class="section-container">
-      <div class="contact-container">
-        <div class="contact-info slide-left">
-          <h2>Hours & Contact</h2>
-
-          <div class="hours-box scale-up">
-            <h3>📅 Hours of Operation</h3>
-            <div class="hours">Monday – Friday<br>6:00 AM – 6:00 PM</div>
-          </div>
-
-          <div class="contact-details">
-            <div class="contact-item pop-in stagger-1">
-              <div class="icon">📍</div>
-              <div>
-                <h4>Location</h4>
-                <p>2058 Ridge Ave, Philadelphia, PA</p>
-              </div>
-            </div>
-
-            <div class="contact-item pop-in stagger-2">
-              <div class="icon">📞</div>
-              <div>
-                <h4>Phone</h4>
-                <p>267-807-2918</p>
-              </div>
-            </div>
-
-            <div class="contact-item pop-in stagger-3">
-              <div class="icon">📧</div>
-              <div>
-                <h4>Email</h4>
-                <p>info@allyzworldofknowledge.com</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="contact-cta slide-right scale-up">
-          <img src="logo-transparent.png" alt="Allyz World of Knowledge">
-          <h3>Ready to Enroll?</h3>
-          <p class="limited-spots sparkle">✨ Limited Spots Available</p>
-          <a href="tel:2678072918" class="btn-primary pulse-glow">📞 Call to Enroll Today</a>
-
-          <a href="https://instagram.com/allyzworldofknowledge_" target="_blank" class="social-link">
-            📸 Follow us on Instagram @allyzworldofknowledge_
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
   <footer>
-    <p>© 2026 Allyz World of Knowledge. All rights reserved.</p>
+    <div class="wrap">
+      Allyz World of Knowledge. Safe care, creative learning, and family support in Philadelphia.
+    </div>
   </footer>
-
-  <!-- Scroll Animation Script -->
-  <script>
-    // Intersection Observer for scroll animations
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animated');
-        }
-      });
-    }, observerOptions);
-
-    // Observe all animated elements
-    document.addEventListener('DOMContentLoaded', () => {
-      // Animate hero elements immediately with stagger
-      const heroElements = document.querySelectorAll('.hero .fade-up, .hero .bounce-in, .hero .slide-right');
-      heroElements.forEach((el, index) => {
-        setTimeout(() => {
-          el.classList.add('animated');
-        }, index * 150);
-      });
-
-      // Observe scroll elements
-      const animatedElements = document.querySelectorAll('.animate-on-scroll, .slide-left, .slide-right, .scale-up, .pop-in, .bounce-in, .fade-up');
-      animatedElements.forEach(el => observer.observe(el));
-    });
-  </script>
-
 </body>
 </html>
