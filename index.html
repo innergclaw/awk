@@ -22,9 +22,13 @@
       --ink: #273238;
       --muted: #667176;
       --white: #ffffff;
-      --line: rgba(39, 50, 56, .14);
+      --panel: #fffdf8;
+      --deep: #17232a;
+      --line: rgba(39, 50, 56, .18);
+      --strong-line: rgba(39, 50, 56, .72);
       --shadow: 0 24px 70px rgba(39, 50, 56, .14);
-      --radius: 26px;
+      --hard-shadow: 8px 8px 0 rgba(39, 50, 56, .16);
+      --radius: 18px;
     }
 
     * { box-sizing: border-box; }
@@ -39,9 +43,11 @@
       font-family: Nunito, system-ui, sans-serif;
       color: var(--ink);
       background:
-        radial-gradient(circle at 8% 10%, rgba(247,168,197,.34), transparent 24%),
-        radial-gradient(circle at 88% 6%, rgba(142,223,231,.34), transparent 22%),
-        radial-gradient(circle at 78% 82%, rgba(169,226,199,.34), transparent 24%),
+        linear-gradient(90deg, rgba(255,255,255,.7) 0 1px, transparent 1px 100%) 0 0 / 44px 44px,
+        linear-gradient(rgba(255,255,255,.7) 0 1px, transparent 1px 100%) 0 0 / 44px 44px,
+        radial-gradient(circle at 8% 10%, rgba(247,168,197,.4), transparent 23%),
+        radial-gradient(circle at 88% 6%, rgba(142,223,231,.38), transparent 24%),
+        radial-gradient(circle at 78% 82%, rgba(169,226,199,.34), transparent 25%),
         var(--cream);
       overflow-x: hidden;
     }
@@ -51,12 +57,11 @@
       position: fixed;
       inset: 0;
       z-index: -1;
-      opacity: .32;
+      opacity: .16;
       pointer-events: none;
       background-image:
-        linear-gradient(var(--line) 1px, transparent 1px),
-        linear-gradient(90deg, var(--line) 1px, transparent 1px);
-      background-size: 34px 34px;
+        linear-gradient(135deg, transparent 0 46%, rgba(39,50,56,.16) 46% 48%, transparent 48% 100%);
+      background-size: 72px 72px;
     }
 
     img { max-width: 100%; display: block; }
@@ -71,8 +76,8 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      border-bottom: 1px solid var(--line);
-      background: rgba(249,247,242,.88);
+      border-bottom: 2px solid var(--ink);
+      background: rgba(249,247,242,.92);
       backdrop-filter: blur(18px);
     }
 
@@ -97,12 +102,13 @@
       object-fit: contain;
       border-radius: 18px;
       background: var(--white);
-      box-shadow: 0 8px 20px rgba(39,50,56,.09);
+      border: 2px solid rgba(39,50,56,.12);
+      box-shadow: 4px 4px 0 rgba(39,50,56,.08);
     }
 
     .brand strong {
       display: block;
-      font-family: "Baloo 2", cursive;
+      font-family: "Baloo 2", Nunito, system-ui, sans-serif;
       font-size: 1.12rem;
       line-height: 1;
     }
@@ -128,6 +134,7 @@
     .nav-links a {
       padding: 10px 12px;
       border-radius: 999px;
+      border: 1px solid transparent;
       color: var(--ink);
       font-size: .86rem;
       font-weight: 900;
@@ -135,17 +142,19 @@
 
     .nav-links a:hover {
       background: var(--white);
-      box-shadow: 0 8px 18px rgba(39,50,56,.08);
+      border-color: var(--line);
+      box-shadow: 4px 4px 0 rgba(39,50,56,.08);
     }
 
     .nav-links .cta,
     .button.primary {
       background: var(--yellow);
-      box-shadow: inset 0 -3px 0 rgba(39,50,56,.12), 0 12px 24px rgba(246,214,94,.3);
+      border: 2px solid var(--ink);
+      box-shadow: 5px 5px 0 rgba(39,50,56,.16);
     }
 
     .hero {
-      padding: 72px 0 52px;
+      padding: 34px 0 54px;
     }
 
     .hero-grid {
@@ -153,6 +162,14 @@
       grid-template-columns: minmax(0, .96fr) minmax(360px, .76fr);
       gap: 34px;
       align-items: center;
+      border: 2px solid var(--ink);
+      border-radius: 34px;
+      background:
+        radial-gradient(circle at 3% 8%, rgba(247,168,197,.42), transparent 30%),
+        radial-gradient(circle at 94% 4%, rgba(142,223,231,.42), transparent 28%),
+        linear-gradient(135deg, rgba(255,255,255,.88), rgba(255,253,248,.72));
+      padding: clamp(22px, 4vw, 44px);
+      box-shadow: var(--hard-shadow);
     }
 
     .hero-grid > *,
@@ -168,7 +185,7 @@
       align-items: center;
       gap: 10px;
       margin-bottom: 16px;
-      border: 2px solid rgba(39,50,56,.12);
+      border: 2px solid rgba(39,50,56,.18);
       border-radius: 999px;
       background: var(--white);
       padding: 9px 14px;
@@ -199,7 +216,7 @@
 
     h1 {
       max-width: 760px;
-      font-size: clamp(3.6rem, 8vw, 7.4rem);
+      font-size: clamp(3.4rem, 7.4vw, 6.8rem);
       overflow-wrap: normal;
     }
 
@@ -236,17 +253,22 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      border: 0;
+      border: 2px solid var(--ink);
       border-radius: 999px;
       padding: 0 20px;
       font-weight: 1000;
       text-transform: uppercase;
       letter-spacing: .02em;
+      transition: transform .16s ease, box-shadow .16s ease;
+    }
+
+    .button:hover {
+      transform: translate(-2px, -2px);
     }
 
     .button.secondary {
       background: var(--white);
-      box-shadow: 0 12px 28px rgba(39,50,56,.1);
+      box-shadow: 5px 5px 0 rgba(39,50,56,.1);
     }
 
     .trust-row {
@@ -258,15 +280,15 @@
     }
 
     .trust-pill {
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      background: rgba(255,255,255,.82);
+      border: 2px solid rgba(39,50,56,.18);
+      border-radius: 18px;
+      background: rgba(255,255,255,.9);
       padding: 16px;
     }
 
     .trust-pill b {
       display: block;
-      font-family: "Baloo 2", cursive;
+      font-family: "Baloo 2", Nunito, system-ui, sans-serif;
       font-size: 1.6rem;
       line-height: 1;
     }
@@ -282,35 +304,37 @@
 
     .hero-card {
       position: relative;
-      border-radius: 34px;
+      border-radius: 26px;
       background: var(--white);
-      padding: 16px;
-      box-shadow: var(--shadow);
+      padding: 12px;
+      border: 2px solid var(--ink);
+      box-shadow: 8px 8px 0 rgba(39,50,56,.14);
     }
 
     .hero-photo {
       height: 520px;
-      border-radius: 24px;
+      border-radius: 18px;
       object-fit: cover;
       object-position: center;
       width: 100%;
-      box-shadow: inset 0 0 0 1px var(--line);
+      border: 1px solid rgba(39,50,56,.16);
     }
 
     .availability {
       position: absolute;
       top: 26px;
       right: 26px;
-      border-radius: 20px;
+      border-radius: 14px;
       background: var(--mint);
       padding: 12px 14px;
-      box-shadow: 0 14px 34px rgba(39,50,56,.13);
+      border: 2px solid var(--ink);
+      box-shadow: 5px 5px 0 rgba(39,50,56,.14);
       font-weight: 1000;
       text-align: center;
     }
 
     .section {
-      padding: 76px 0;
+      padding: 82px 0;
     }
 
     .section-head {
@@ -343,10 +367,10 @@
     .testimonial,
     .contact-card,
     .gallery-card {
-      border: 1px solid var(--line);
+      border: 2px solid rgba(39,50,56,.16);
       border-radius: var(--radius);
-      background: rgba(255,255,255,.9);
-      box-shadow: 0 18px 50px rgba(39,50,56,.08);
+      background: rgba(255,255,255,.94);
+      box-shadow: 6px 6px 0 rgba(39,50,56,.08);
     }
 
     .program-card {
@@ -383,8 +407,11 @@
     }
 
     .about-band {
-      background: linear-gradient(135deg, rgba(142,223,231,.3), rgba(247,168,197,.24)), var(--white);
-      border-block: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(39,50,56,.06) 0 1px, transparent 1px 100%) 0 0 / 28px 28px,
+        linear-gradient(135deg, rgba(142,223,231,.3), rgba(247,168,197,.24)),
+        var(--white);
+      border-block: 2px solid var(--ink);
     }
 
     .about-grid {
@@ -395,10 +422,11 @@
     }
 
     .about-panel {
-      border-radius: 34px;
+      border: 2px solid var(--ink);
+      border-radius: 26px;
       background: var(--white);
       padding: clamp(24px, 4vw, 42px);
-      box-shadow: var(--shadow);
+      box-shadow: var(--hard-shadow);
     }
 
     .about-panel p {
@@ -419,7 +447,8 @@
       gap: 12px;
       align-items: start;
       border-radius: 20px;
-      background: var(--cream);
+      background: var(--panel);
+      border: 1px solid rgba(39,50,56,.12);
       padding: 13px;
       color: var(--ink);
       font-weight: 900;
@@ -436,13 +465,14 @@
     }
 
     .environment-card {
-      border-radius: 34px;
+      border: 2px solid var(--ink);
+      border-radius: 26px;
       background: var(--white);
       min-height: 520px;
-      padding: 22px;
+      padding: 18px;
       display: grid;
       align-content: end;
-      box-shadow: var(--shadow);
+      box-shadow: var(--hard-shadow);
       overflow: hidden;
       position: relative;
     }
@@ -459,15 +489,16 @@
     .environment-caption {
       position: relative;
       z-index: 1;
-      border-radius: 24px;
+      border-radius: 18px;
       background: rgba(249,247,242,.93);
       padding: 18px;
-      box-shadow: 0 15px 35px rgba(39,50,56,.12);
+      border: 2px solid rgba(39,50,56,.18);
+      box-shadow: 5px 5px 0 rgba(39,50,56,.1);
     }
 
     .environment-caption b {
       display: block;
-      font-family: "Baloo 2", cursive;
+      font-family: "Baloo 2", Nunito, system-ui, sans-serif;
       font-size: 1.7rem;
     }
 
@@ -498,10 +529,11 @@
     }
 
     .activity-card {
-      border-radius: 26px;
+      border: 2px solid rgba(39,50,56,.16);
+      border-radius: 18px;
       padding: 22px;
       background: var(--white);
-      box-shadow: 0 14px 40px rgba(39,50,56,.08);
+      box-shadow: 5px 5px 0 rgba(39,50,56,.08);
     }
 
     .activity-card:nth-child(1) { border-top: 8px solid var(--sky); }
@@ -533,6 +565,7 @@
       object-fit: cover;
       object-position: center;
       background: var(--cream);
+      border-bottom: 2px solid rgba(39,50,56,.16);
     }
 
     .gallery-card div {
@@ -556,10 +589,11 @@
     .tour {
       border-radius: 40px;
       background:
-        radial-gradient(circle at 88% 12%, rgba(246,214,94,.65), transparent 25%),
+        radial-gradient(circle at 88% 12%, rgba(246,214,94,.72), transparent 25%),
         linear-gradient(135deg, var(--sky), var(--mint));
+      border: 2px solid var(--ink);
       padding: clamp(28px, 5vw, 54px);
-      box-shadow: var(--shadow);
+      box-shadow: var(--hard-shadow);
       overflow: hidden;
     }
 
@@ -628,6 +662,10 @@
       .about-grid,
       .tour-grid {
         grid-template-columns: 1fr;
+      }
+
+      .hero-grid {
+        border-radius: 24px;
       }
 
       .program-grid {
@@ -778,7 +816,7 @@
   <main id="top">
     <section class="hero">
       <div class="wrap hero-grid">
-        <div>
+        <div class="hero-copy">
           <div class="eyebrow">2058 Ridge Ave, Philadelphia, PA</div>
           <h1>A safe place to <span class="soft-gradient">learn, grow,<br class="mobile-break"> and thrive.</span></h1>
           <p class="lead">Allyz World of Knowledge gives children a nurturing early learning environment where care, creativity, structure, and family support work together every day.</p>
