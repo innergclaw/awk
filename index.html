@@ -198,11 +198,14 @@
 
     .eyebrow::before {
       content: "";
-      width: 12px;
+      width: 48px;
       height: 12px;
       border-radius: 999px;
-      background: var(--pink);
-      box-shadow: 18px 0 0 var(--sky), 36px 0 0 var(--yellow);
+      flex: 0 0 48px;
+      background:
+        radial-gradient(circle at 6px 50%, var(--pink) 0 6px, transparent 6px),
+        radial-gradient(circle at 24px 50%, var(--sky) 0 6px, transparent 6px),
+        radial-gradient(circle at 42px 50%, var(--yellow) 0 6px, transparent 6px);
     }
 
     h1,
