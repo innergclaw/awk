@@ -289,22 +289,12 @@
     }
 
     .hero-photo {
-      min-height: 430px;
+      height: 520px;
       border-radius: 24px;
       object-fit: cover;
+      object-position: center;
       width: 100%;
       box-shadow: inset 0 0 0 1px var(--line);
-    }
-
-    .logo-float {
-      position: absolute;
-      left: 24px;
-      bottom: 24px;
-      width: min(250px, calc(100% - 48px));
-      border-radius: 24px;
-      background: rgba(255,255,255,.94);
-      padding: 12px;
-      box-shadow: 0 18px 46px rgba(39,50,56,.18);
     }
 
     .availability {
@@ -447,18 +437,28 @@
 
     .environment-card {
       border-radius: 34px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,.86)),
-        url("hero-photo.jpg") center/cover;
+      background: var(--white);
       min-height: 520px;
       padding: 22px;
       display: grid;
       align-content: end;
       box-shadow: var(--shadow);
       overflow: hidden;
+      position: relative;
+    }
+
+    .environment-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
     }
 
     .environment-caption {
+      position: relative;
+      z-index: 1;
       border-radius: 24px;
       background: rgba(249,247,242,.93);
       padding: 18px;
@@ -529,8 +529,10 @@
 
     .gallery-card img {
       width: 100%;
-      height: 280px;
+      height: 340px;
       object-fit: cover;
+      object-position: center;
+      background: var(--cream);
     }
 
     .gallery-card div {
@@ -734,18 +736,16 @@
         min-height: 360px;
       }
 
+      .hero-photo {
+        height: 420px;
+      }
+
       .availability {
         top: 18px;
         right: 12px;
         max-width: 108px;
         padding: 10px 12px;
         font-size: .78rem;
-      }
-
-      .logo-float {
-        width: min(210px, calc(100% - 36px));
-        left: 18px;
-        bottom: 18px;
       }
 
       .hero-actions .button,
@@ -793,11 +793,8 @@
           </div>
         </div>
         <aside class="hero-card" aria-label="Children at Allyz World of Knowledge">
-          <img class="hero-photo" src="hero-photo.jpg" alt="Smiling children learning together">
+          <img class="hero-photo" src="daycare5.jpg" alt="Bright classroom inside Allyz World of Knowledge">
           <div class="availability">Enrollment<br>Open</div>
-          <div class="logo-float">
-            <img src="logo-transparent.png" alt="Allyz World of Knowledge logo">
-          </div>
         </aside>
       </div>
     </section>
@@ -835,6 +832,7 @@
           </div>
         </article>
         <aside class="environment-card">
+          <img src="daycare4.jpg" alt="Open classroom with learning tables and soft activity rugs">
           <div class="environment-caption">
             <b>A place that feels safe from the first visit.</b>
             <p class="section-copy">Bright learning moments, gentle structure, and a welcoming atmosphere for Philadelphia families.</p>
@@ -890,9 +888,9 @@
           <p>Our visual promise is simple: clean spaces, soft colors, happy learning, and a place where parents can picture their child thriving.</p>
         </div>
         <div class="gallery-grid">
-          <article class="gallery-card"><img src="hero-photo.jpg" alt="Children smiling together in a classroom"><div><h3>Classroom Joy</h3><p class="section-copy">Learning feels better when children feel welcomed.</p></div></article>
-          <article class="gallery-card"><img src="logo.png" alt="Allyz World of Knowledge logo"><div><h3>World Of Learning</h3><p class="section-copy">A playful brand built around growth and curiosity.</p></div></article>
-          <article class="gallery-card"><img src="hero-photo.jpg" alt="Children learning and playing together"><div><h3>Community Care</h3><p class="section-copy">Support for children, parents, and working families.</p></div></article>
+          <article class="gallery-card"><img src="daycare.jpg" alt="Cozy reading and calming corner inside the daycare"><div><h3>Calming Corners</h3><p class="section-copy">A soft reading space where children can slow down, reset, and explore books.</p></div></article>
+          <article class="gallery-card"><img src="daycare2.jpg" alt="Infant care area with wooden cribs and soft rugs"><div><h3>Infant Care Space</h3><p class="section-copy">Clean, gentle rooms designed to feel peaceful for the youngest learners.</p></div></article>
+          <article class="gallery-card"><img src="daycare3.jpg" alt="Interactive play area with toys and early learning materials"><div><h3>Creative Play</h3><p class="section-copy">Hands-on activity areas help children move, imagine, and build confidence.</p></div></article>
         </div>
       </div>
     </section>
